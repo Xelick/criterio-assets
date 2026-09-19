@@ -1,0 +1,22 @@
+# Este repo son archivos estáticos: no hay nada que compilar.
+#
+# `publish = "."` dice que el sitio es la raíz del repo, que es lo que hace que
+# las URL queden planas — las colas de publicación piden
+# `<sitio>/C01-01.jpg`, no `<sitio>/imagenes/C01-01.jpg`. Si algún día esto
+# cambia, hay que cambiar HOST en cola.py y en cola_reels.py a la vez.
+[build]
+  publish = "."
+  command = ""
+
+# Los nombres de archivo llevan el número de lámina, así que una pieza
+# regenerada conserva su nombre y un caché largo serviría la versión vieja.
+# Con must-revalidate el navegador pregunta antes de reutilizar.
+[[headers]]
+  for = "/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/*.mp4"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
