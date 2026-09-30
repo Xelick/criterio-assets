@@ -1,0 +1,42 @@
+[Script Info]
+Title: Criterio - letra gigante
+ScriptType: v4.00+
+PlayResX: 1920
+PlayResY: 1080
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Kin,Fraunces 144pt SuperSoft Wonky Black,270,&H00E6F6FF,&H00E6F6FF,&H00E62727,&H00E62727,0,0,0,0,100,100,0,0,1,2,8,5,0,0,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 1,0:00:03.92,0:00:06.95,Kin,,0,0,0,,{\an5\pos(960.0,630.9)\org(960.0,630.9)\1c&H00E6F6FF&\3c&H00E62727&\4c&H00E62727&\bord3\xshad12\yshad14\4a&H00&\frz-7\fscx0\fscy0\t(0,120,\frz0\fscx116\fscy116)\t(120,210,\fscx100\fscy100)\t(2890,3030,\fscx112\fscy112\alpha&HFF&)}Menú
+Dialogue: 1,0:00:05.01,0:00:06.95,Kin,,0,0,0,,{\an5\pos(747.7,895.5)\org(747.7,895.5)\1c&H00E6F6FF&\3c&H00E62727&\4c&H00E62727&\bord3\xshad12\yshad14\4a&H00&\frz6\fscx0\fscy0\t(0,120,\frz0\fscx116\fscy116)\t(120,210,\fscx100\fscy100)\t(1799,1939,\fscx112\fscy112\alpha&HFF&)}en
+Dialogue: 1,0:00:05.29,0:00:06.95,Kin,,0,0,0,,{\an5\pos(1078.4,895.5)\org(1078.4,895.5)\1c&H00E6F6FF&\3c&H00E62727&\4c&H00E62727&\bord3\xshad12\yshad14\4a&H00&\frz-5\fscx0\fscy0\t(0,120,\frz0\fscx116\fscy116)\t(120,210,\fscx100\fscy100)\t(1520,1660,\fscx112\fscy112\alpha&HFF&)}foto,
+Dialogue: 1,0:00:06.99,0:00:09.30,Kin,,0,0,0,,{\an5\pos(960.0,630.9)\org(960.0,630.9)\1c&H00E6F6FF&\3c&H00E62727&\4c&H00E62727&\bord3\xshad12\yshad14\4a&H00&\frz8\fscx0\fscy0\t(0,120,\frz0\fscx116\fscy116)\t(120,210,\fscx100\fscy100)\t(2170,2310,\fscx112\fscy112\alpha&HFF&)}sumas
+Dialogue: 1,0:00:07.39,0:00:09.30,Kin,,0,0,0,,{\an5\pos(713.3,895.5)\org(713.3,895.5)\1c&H00E6F6FF&\3c&H00E62727&\4c&H00E62727&\bord3\xshad12\yshad14\4a&H00&\frz-7\fscx0\fscy0\t(0,120,\frz0\fscx116\fscy116)\t(120,210,\fscx100\fscy100)\t(1770,1910,\fscx112\fscy112\alpha&HFF&)}a
+Dialogue: 1,0:00:07.59,0:00:09.30,Kin,,0,0,0,,{\an5\pos(1028.4,895.5)\org(1028.4,895.5)\1c&H00E6F6FF&\3c&H00E62727&\4c&H00E62727&\bord3\xshad12\yshad14\4a&H00&\frz6\fscx0\fscy0\t(0,120,\frz0\fscx116\fscy116)\t(120,210,\fscx100\fscy100)\t(1570,1710,\fscx112\fscy112\alpha&HFF&)}mano
+Dialogue: 1,0:00:12.34,0:00:13.44,Kin,,0,0,0,,{\an5\pos(630.3,895.5)\org(630.3,895.5)\1c&H00E6F6FF&\3c&H00E62727&\4c&H00E62727&\bord3\xshad12\yshad14\4a&H00&\frz-5\fscx0\fscy0\t(0,120,\frz0\fscx116\fscy116)\t(120,210,\fscx100\fscy100)\t(959,1099,\fscx112\fscy112\alpha&HFF&)}Tu
+Dialogue: 1,0:00:12.64,0:00:13.44,Kin,,0,0,0,,{\an5\pos(1092.9,895.5)\org(1092.9,895.5)\1c&H00E6F6FF&\3c&H00E62727&\4c&H00E62727&\bord3\xshad12\yshad14\4a&H00&\frz8\fscx0\fscy0\t(0,120,\frz0\fscx116\fscy116)\t(120,210,\fscx100\fscy100)\t(660,800,\fscx112\fscy112\alpha&HFF&)}negocio
+Dialogue: 1,0:00:13.46,0:00:15.90,Kin,,0,0,0,,{\an5\pos(704.3,630.9)\org(704.3,630.9)\1c&H00E6F6FF&\3c&H00E62727&\4c&H00E62727&\bord3\xshad12\yshad14\4a&H00&\frz-7\fscx0\fscy0\t(0,120,\frz0\fscx116\fscy116)\t(120,210,\fscx100\fscy100)\t(2300,2440,\fscx112\fscy112\alpha&HFF&)}a
+Dialogue: 1,0:00:13.69,0:00:15.90,Kin,,0,0,0,,{\an5\pos(1028.4,630.9)\org(1028.4,630.9)\1c&H00E6F6FF&\3c&H00E62727&\4c&H00E62727&\bord3\xshad12\yshad14\4a&H00&\frz6\fscx0\fscy0\t(0,120,\frz0\fscx116\fscy116)\t(120,210,\fscx100\fscy100)\t(2070,2210,\fscx112\fscy112\alpha&HFF&)}punta
+Dialogue: 1,0:00:14.19,0:00:15.90,Kin,,0,0,0,,{\an5\pos(763.1,895.5)\org(763.1,895.5)\1c&H00E6F6FF&\3c&H00E62727&\4c&H00E62727&\bord3\xshad12\yshad14\4a&H00&\frz-5\fscx0\fscy0\t(0,120,\frz0\fscx116\fscy116)\t(120,210,\fscx100\fscy100)\t(1570,1710,\fscx112\fscy112\alpha&HFF&)}de
+Dialogue: 1,0:00:14.49,0:00:15.90,Kin,,0,0,0,,{\an5\pos(1075.8,895.5)\org(1075.8,895.5)\1c&H0000DAFF&\3c&H00E62727&\4c&H00E62727&\bord3\xshad12\yshad14\4a&H00&\frz8\fscx0\fscy0\t(0,120,\frz0\fscx116\fscy116)\t(120,210,\fscx100\fscy100)\t(1270,1410,\fscx112\fscy112\alpha&HFF&)}chat
+Dialogue: 1,0:00:16.69,0:00:17.74,Kin,,0,0,0,,{\an5\pos(960.0,895.5)\org(960.0,895.5)\1c&H00E6F6FF&\3c&H00E62727&\4c&H00E62727&\bord3\xshad12\yshad14\4a&H00&\frz-7\fscx0\fscy0\t(0,120,\frz0\fscx116\fscy116)\t(120,210,\fscx100\fscy100)\t(909,1049,\fscx112\fscy112\alpha&HFF&)}Cuéntame
+Dialogue: 1,0:00:17.76,0:00:21.40,Kin,,0,0,0,,{\an5\pos(960.0,630.9)\org(960.0,630.9)\1c&H00E6F6FF&\3c&H00E62727&\4c&H00E62727&\bord3\xshad12\yshad14\4a&H00&\frz6\fscx0\fscy0\t(0,120,\frz0\fscx116\fscy116)\t(120,210,\fscx100\fscy100)\t(3499,3639,\fscx112\fscy112\alpha&HFF&)}qué
+Dialogue: 1,0:00:18.19,0:00:21.40,Kin,,0,0,0,,{\an5\pos(960.0,895.5)\org(960.0,895.5)\1c&H0000DAFF&\3c&H00E62727&\4c&H00E62727&\bord3\xshad12\yshad14\4a&H00&\frz-5\fscx0\fscy0\t(0,120,\frz0\fscx116\fscy116)\t(120,210,\fscx100\fscy100)\t(3069,3209,\fscx112\fscy112\alpha&HFF&)}vendes
+Dialogue: 2,0:00:22.22,0:00:24.10,Kin,,0,0,0,,{\an5\pos(960.0,690)\org(960.0,690)\1c&H0000DAFF&\3c&H00E62727&\4c&H00E62727&\bord5\xshad19\yshad23\4a&H00&\frz-12\fscx0\fscy0\t(0,130,\frz-3\fscx122\fscy122)\t(130,240,\fscx100\fscy100)\t(1359,1449,\fscx112\fscy112)\t(1449,1579,\fscx100\fscy100)\t(1729,1879,\fscx115\fscy115\alpha&HFF&)}¡Criterio!
+Dialogue: 1,0:00:24.19,0:00:25.97,Kin,,0,0,0,,{\an5\pos(868.0,630.9)\org(868.0,630.9)\1c&H00E6F6FF&\3c&H00E62727&\4c&H00E62727&\bord3\xshad12\yshad14\4a&H00&\frz8\fscx0\fscy0\t(0,120,\frz0\fscx116\fscy116)\t(120,210,\fscx100\fscy100)\t(1639,1779,\fscx112\fscy112\alpha&HFF&)}Arman
+Dialogue: 1,0:00:24.86,0:00:25.97,Kin,,0,0,0,,{\an5\pos(1266.7,630.9)\org(1266.7,630.9)\1c&H00E6F6FF&\3c&H00E62727&\4c&H00E62727&\bord3\xshad12\yshad14\4a&H00&\frz-7\fscx0\fscy0\t(0,120,\frz0\fscx116\fscy116)\t(120,210,\fscx100\fscy100)\t(969,1109,\fscx112\fscy112\alpha&HFF&)}el
+Dialogue: 1,0:00:25.14,0:00:25.97,Kin,,0,0,0,,{\an5\pos(960.0,895.5)\org(960.0,895.5)\1c&H0000DAFF&\3c&H00E62727&\4c&H00E62727&\bord3\xshad12\yshad14\4a&H00&\frz6\fscx0\fscy0\t(0,120,\frz0\fscx116\fscy116)\t(120,210,\fscx100\fscy100)\t(689,829,\fscx112\fscy112\alpha&HFF&)}pedido,
+Dialogue: 1,0:00:25.99,0:00:28.15,Kin,,0,0,0,,{\an5\pos(748.7,630.9)\org(748.7,630.9)\1c&H00E6F6FF&\3c&H00E62727&\4c&H00E62727&\bord3\xshad12\yshad14\4a&H00&\frz-5\fscx0\fscy0\t(0,120,\frz0\fscx116\fscy116)\t(120,210,\fscx100\fscy100)\t(2019,2159,\fscx112\fscy112\alpha&HFF&)}te
+Dialogue: 1,0:00:26.19,0:00:28.15,Kin,,0,0,0,,{\an5\pos(1059.2,630.9)\org(1059.2,630.9)\1c&H00E6F6FF&\3c&H00E62727&\4c&H00E62727&\bord3\xshad12\yshad14\4a&H00&\frz8\fscx0\fscy0\t(0,120,\frz0\fscx116\fscy116)\t(120,210,\fscx100\fscy100)\t(1819,1959,\fscx112\fscy112\alpha&HFF&)}llega
+Dialogue: 1,0:00:26.72,0:00:28.15,Kin,,0,0,0,,{\an5\pos(763.1,895.5)\org(763.1,895.5)\1c&H00E6F6FF&\3c&H00E62727&\4c&H00E62727&\bord3\xshad12\yshad14\4a&H00&\frz-7\fscx0\fscy0\t(0,120,\frz0\fscx116\fscy116)\t(120,210,\fscx100\fscy100)\t(1289,1429,\fscx112\fscy112\alpha&HFF&)}al
+Dialogue: 1,0:00:27.09,0:00:28.15,Kin,,0,0,0,,{\an5\pos(1054.6,895.5)\org(1054.6,895.5)\1c&H0000DAFF&\3c&H00E62727&\4c&H00E62727&\bord3\xshad12\yshad14\4a&H00&\frz6\fscx0\fscy0\t(0,120,\frz0\fscx116\fscy116)\t(120,210,\fscx100\fscy100)\t(919,1059,\fscx112\fscy112\alpha&HFF&)}chat
+Dialogue: 1,0:00:28.24,0:00:29.94,Kin,,0,0,0,,{\an5\pos(960.0,630.9)\org(960.0,630.9)\1c&H00E6F6FF&\3c&H00E62727&\4c&H00E62727&\bord3\xshad12\yshad14\4a&H00&\frz-5\fscx0\fscy0\t(0,120,\frz0\fscx116\fscy116)\t(120,210,\fscx100\fscy100)\t(1559,1699,\fscx112\fscy112\alpha&HFF&)}Trabaja
+Dialogue: 1,0:00:28.91,0:00:29.94,Kin,,0,0,0,,{\an5\pos(960.0,895.5)\org(960.0,895.5)\1c&H00E6F6FF&\3c&H00E62727&\4c&H00E62727&\bord3\xshad12\yshad14\4a&H00&\frz8\fscx0\fscy0\t(0,120,\frz0\fscx116\fscy116)\t(120,210,\fscx100\fscy100)\t(890,1030,\fscx112\fscy112\alpha&HFF&)}menos,
+Dialogue: 1,0:00:29.96,0:00:33.40,Kin,,0,0,0,,{\an5\pos(960.0,630.9)\org(960.0,630.9)\1c&H0000DAFF&\3c&H00E62727&\4c&H00E62727&\bord3\xshad12\yshad14\4a&H00&\frz-7\fscx0\fscy0\t(0,120,\frz0\fscx116\fscy116)\t(120,210,\fscx100\fscy100)\t(3299,3439,\fscx112\fscy112\alpha&HFF&)}vende
+Dialogue: 1,0:00:30.56,0:00:33.40,Kin,,0,0,0,,{\an5\pos(960.0,895.5)\org(960.0,895.5)\1c&H0000DAFF&\3c&H00E62727&\4c&H00E62727&\bord3\xshad12\yshad14\4a&H00&\frz6\fscx0\fscy0\t(0,120,\frz0\fscx116\fscy116)\t(120,210,\fscx100\fscy100)\t(2699,2839,\fscx112\fscy112\alpha&HFF&)}más
+Dialogue: 2,0:00:36.66,0:00:40.00,Kin,,0,0,0,,{\an5\pos(960.0,690)\org(960.0,690)\1c&H0000DAFF&\3c&H00E62727&\4c&H00E62727&\bord5\xshad19\yshad23\4a&H00&\frz-12\fscx0\fscy0\t(0,130,\frz-3\fscx122\fscy122)\t(130,240,\fscx100\fscy100)\t(300,3340,\fscx108\fscy108)}¡Criterio!
