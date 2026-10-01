@@ -1,0 +1,46 @@
+[Script Info]
+Title: Criterio - letra dinamica
+ScriptType: v4.00+
+PlayResX: 1920
+PlayResY: 1080
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Lyric,Nunito Sans Black,92,&H00FFFFFF,&H00FFFFFF,&H00181111,&H80181111,0,0,0,0,100,100,0,0,1,3.2,3,5,0,0,0,1
+Style: Key,Nunito Sans Black,150,&H00181111,&H00181111,&H00181111,&H80181111,0,0,0,0,100,100,0,0,1,0,0,5,0,0,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 1,0:00:03.92,0:00:09.30,Lyric,,0,0,0,,{\an5\move(600.9,896,600.9,878,0,160)\blur1\fscx70\fscy70\alpha&HFF&\t(0,120,\alpha&H00&\fscx108\fscy108)\t(120,200,\fscx100\fscy100)\1c&H0000DAFF&\t(900,1020,\1c&H00FFFFFF&)\fad(0,180)}Menú
+Dialogue: 1,0:00:05.01,0:00:09.30,Lyric,,0,0,0,,{\an5\move(741.7,896,741.7,878,0,160)\blur1\fscx70\fscy70\alpha&HFF&\t(0,120,\alpha&H00&\fscx108\fscy108)\t(120,200,\fscx100\fscy100)\1c&H0000DAFF&\t(279,399,\1c&H00FFFFFF&)\fad(0,180)}en
+Dialogue: 1,0:00:05.29,0:00:09.30,Lyric,,0,0,0,,{\an5\move(870.4,896,870.4,878,0,160)\blur1\fscx70\fscy70\alpha&HFF&\t(0,120,\alpha&H00&\fscx108\fscy108)\t(120,200,\fscx100\fscy100)\1c&H0000DAFF&\t(900,1020,\1c&H00FFFFFF&)\fad(0,180)}foto,
+Dialogue: 1,0:00:06.99,0:00:09.30,Lyric,,0,0,0,,{\an5\move(1060.2,896,1060.2,878,0,160)\blur1\fscx70\fscy70\alpha&HFF&\t(0,120,\alpha&H00&\fscx108\fscy108)\t(120,200,\fscx100\fscy100)\1c&H0000DAFF&\t(400,520,\1c&H00FFFFFF&)\fad(0,180)}sumas
+Dialogue: 1,0:00:07.39,0:00:09.30,Lyric,,0,0,0,,{\an5\move(1195.3,896,1195.3,878,0,160)\blur1\fscx70\fscy70\alpha&HFF&\t(0,120,\alpha&H00&\fscx108\fscy108)\t(120,200,\fscx100\fscy100)\1c&H0000DAFF&\t(200,320,\1c&H00FFFFFF&)\fad(0,180)}a
+Dialogue: 1,0:00:07.59,0:00:09.30,Lyric,,0,0,0,,{\an5\move(1318.1,896,1318.1,878,0,160)\blur1\fscx70\fscy70\alpha&HFF&\t(0,120,\alpha&H00&\fscx108\fscy108)\t(120,200,\fscx100\fscy100)\1c&H0000DAFF&\t(899,1019,\1c&H00FFFFFF&)\fad(0,180)}mano
+Dialogue: 1,0:00:12.34,0:00:15.90,Lyric,,0,0,0,,{\an5\move(579.6,896,579.6,878,0,160)\blur1\fscx70\fscy70\alpha&HFF&\t(0,120,\alpha&H00&\fscx108\fscy108)\t(120,200,\fscx100\fscy100)\1c&H0000DAFF&\t(299,419,\1c&H00FFFFFF&)\fad(0,180)}Tu
+Dialogue: 1,0:00:12.64,0:00:15.90,Lyric,,0,0,0,,{\an5\move(756.2,896,756.2,878,0,160)\blur1\fscx70\fscy70\alpha&HFF&\t(0,120,\alpha&H00&\fscx108\fscy108)\t(120,200,\fscx100\fscy100)\1c&H0000DAFF&\t(820,940,\1c&H00FFFFFF&)\fad(0,180)}negocio
+Dialogue: 1,0:00:13.46,0:00:15.90,Lyric,,0,0,0,,{\an5\move(913.6,896,913.6,878,0,160)\blur1\fscx70\fscy70\alpha&HFF&\t(0,120,\alpha&H00&\fscx108\fscy108)\t(120,200,\fscx100\fscy100)\1c&H0000DAFF&\t(230,350,\1c&H00FFFFFF&)\fad(0,180)}a
+Dialogue: 1,0:00:13.69,0:00:15.90,Lyric,,0,0,0,,{\an5\move(1040.9,896,1040.9,878,0,160)\blur1\fscx70\fscy70\alpha&HFF&\t(0,120,\alpha&H00&\fscx108\fscy108)\t(120,200,\fscx100\fscy100)\1c&H0000DAFF&\t(500,620,\1c&H00FFFFFF&)\fad(0,180)}punta
+Dialogue: 1,0:00:14.19,0:00:15.90,Lyric,,0,0,0,,{\an5\move(1187.8,896,1187.8,878,0,160)\blur1\fscx70\fscy70\alpha&HFF&\t(0,120,\alpha&H00&\fscx108\fscy108)\t(120,200,\fscx100\fscy100)\1c&H0000DAFF&\t(300,420,\1c&H00FFFFFF&)\fad(0,180)}de
+Dialogue: 1,0:00:14.49,0:00:15.90,Lyric,,0,0,0,,{\an5\move(1311.0,896,1311.0,878,0,160)\blur1\fscx70\fscy70\alpha&HFF&\t(0,120,\alpha&H00&\fscx108\fscy108)\t(120,200,\fscx100\fscy100)\1c&H0000DAFF&\t(900,1020,\1c&H00FFFFFF&)\fad(0,180)}chat
+Dialogue: 1,0:00:16.69,0:00:21.40,Lyric,,0,0,0,,{\an5\move(776.5,896,776.5,878,0,160)\blur1\fscx70\fscy70\alpha&HFF&\t(0,120,\alpha&H00&\fscx108\fscy108)\t(120,200,\fscx100\fscy100)\1c&H0000DAFF&\t(900,1020,\1c&H00FFFFFF&)\fad(0,180)}Cuéntame
+Dialogue: 1,0:00:17.76,0:00:21.40,Lyric,,0,0,0,,{\an5\move(1009.0,896,1009.0,878,0,160)\blur1\fscx70\fscy70\alpha&HFF&\t(0,120,\alpha&H00&\fscx108\fscy108)\t(120,200,\fscx100\fscy100)\1c&H0000DAFF&\t(429,549,\1c&H00FFFFFF&)\fad(0,180)}qué
+Dialogue: 1,0:00:18.19,0:00:21.40,Lyric,,0,0,0,,{\an5\move(1192.6,896,1192.6,878,0,160)\blur1\fscx70\fscy70\alpha&HFF&\t(0,120,\alpha&H00&\fscx108\fscy108)\t(120,200,\fscx100\fscy100)\1c&H0000DAFF&\t(899,1019,\1c&H00FFFFFF&)\fad(0,180)}vendes
+Dialogue: 0,0:00:22.22,0:00:24.10,Key,,0,0,0,,{\an5\pos(960,862)\org(960,862)\frz3\p1\1c&H0000DAFF&\bord0\shad7\4c&H00181111&\4a&H80&\fscx0\fscy85\t(0,150,\fscx106\fscy100)\t(150,230,\fscx100)\fad(0,250)}m 0 0 l 651 0 l 651 147 l 0 147{\p0}
+Dialogue: 1,0:00:22.22,0:00:24.10,Key,,0,0,0,,{\an5\pos(960.0,850.0)\org(960,862)\frz3\1c&H00181111&\bord0\shad0\alpha&HFF&\fscx140\fscy140\t(60,170,\alpha&H00&\fscx95\fscy95)\t(170,260,\fscx100\fscy100)\fad(0,250)}¡CRITERIO!
+Dialogue: 1,0:00:24.19,0:00:28.15,Lyric,,0,0,0,,{\an5\move(555.2,896,555.2,878,0,160)\blur1\fscx70\fscy70\alpha&HFF&\t(0,120,\alpha&H00&\fscx108\fscy108)\t(120,200,\fscx100\fscy100)\1c&H0000DAFF&\t(670,790,\1c&H00FFFFFF&)\fad(0,180)}Arman
+Dialogue: 1,0:00:24.86,0:00:28.15,Lyric,,0,0,0,,{\an5\move(707.8,896,707.8,878,0,160)\blur1\fscx70\fscy70\alpha&HFF&\t(0,120,\alpha&H00&\fscx108\fscy108)\t(120,200,\fscx100\fscy100)\1c&H0000DAFF&\t(279,399,\1c&H00FFFFFF&)\fad(0,180)}el
+Dialogue: 1,0:00:25.14,0:00:28.15,Lyric,,0,0,0,,{\an5\move(869.6,896,869.6,878,0,160)\blur1\fscx70\fscy70\alpha&HFF&\t(0,120,\alpha&H00&\fscx108\fscy108)\t(120,200,\fscx100\fscy100)\1c&H0000DAFF&\t(850,970,\1c&H00FFFFFF&)\fad(0,180)}pedido,
+Dialogue: 1,0:00:25.99,0:00:28.15,Lyric,,0,0,0,,{\an5\move(1033.7,896,1033.7,878,0,160)\blur1\fscx70\fscy70\alpha&HFF&\t(0,120,\alpha&H00&\fscx108\fscy108)\t(120,200,\fscx100\fscy100)\1c&H0000DAFF&\t(199,319,\1c&H00FFFFFF&)\fad(0,180)}te
+Dialogue: 1,0:00:26.19,0:00:28.15,Lyric,,0,0,0,,{\an5\move(1161.9,896,1161.9,878,0,160)\blur1\fscx70\fscy70\alpha&HFF&\t(0,120,\alpha&H00&\fscx108\fscy108)\t(120,200,\fscx100\fscy100)\1c&H0000DAFF&\t(530,650,\1c&H00FFFFFF&)\fad(0,180)}llega
+Dialogue: 1,0:00:26.72,0:00:28.15,Lyric,,0,0,0,,{\an5\move(1288.2,896,1288.2,878,0,160)\blur1\fscx70\fscy70\alpha&HFF&\t(0,120,\alpha&H00&\fscx108\fscy108)\t(120,200,\fscx100\fscy100)\1c&H0000DAFF&\t(369,489,\1c&H00FFFFFF&)\fad(0,180)}al
+Dialogue: 1,0:00:27.09,0:00:28.15,Lyric,,0,0,0,,{\an5\move(1403.0,896,1403.0,878,0,160)\blur1\fscx70\fscy70\alpha&HFF&\t(0,120,\alpha&H00&\fscx108\fscy108)\t(120,200,\fscx100\fscy100)\1c&H0000DAFF&\t(859,979,\1c&H00FFFFFF&)\fad(0,180)}chat
+Dialogue: 1,0:00:28.24,0:00:33.40,Lyric,,0,0,0,,{\an5\move(666.9,896,666.9,878,0,160)\blur1\fscx70\fscy70\alpha&HFF&\t(0,120,\alpha&H00&\fscx108\fscy108)\t(120,200,\fscx100\fscy100)\1c&H0000DAFF&\t(669,789,\1c&H00FFFFFF&)\fad(0,180)}Trabaja
+Dialogue: 1,0:00:28.91,0:00:33.40,Lyric,,0,0,0,,{\an5\move(911.4,896,911.4,878,0,160)\blur1\fscx70\fscy70\alpha&HFF&\t(0,120,\alpha&H00&\fscx108\fscy108)\t(120,200,\fscx100\fscy100)\1c&H0000DAFF&\t(900,1020,\1c&H00FFFFFF&)\fad(0,180)}menos,
+Dialogue: 1,0:00:29.96,0:00:33.40,Lyric,,0,0,0,,{\an5\move(1132.1,896,1132.1,878,0,160)\blur1\fscx70\fscy70\alpha&HFF&\t(0,120,\alpha&H00&\fscx108\fscy108)\t(120,200,\fscx100\fscy100)\1c&H00181111&\bord0\shad0\fad(0,180)}vende
+Dialogue: 1,0:00:30.56,0:00:33.40,Lyric,,0,0,0,,{\an5\move(1305.8,896,1305.8,878,0,160)\blur1\fscx70\fscy70\alpha&HFF&\t(0,120,\alpha&H00&\fscx108\fscy108)\t(120,200,\fscx100\fscy100)\1c&H00181111&\bord0\shad0\fad(0,180)}más
+Dialogue: 0,0:00:29.92,0:00:33.40,Lyric,,0,0,0,,{\an4\pos(1016.0,878.8)\p1\1c&H0000DAFF&\bord0\shad4\4c&H00181111&\4a&H90&\fscx0\t(0,160,\fscx100)\fad(0,180)}m 0 0 l 375 0 l 375 78 l 0 78{\p0}
+Dialogue: 0,0:00:36.66,0:00:40.00,Key,,0,0,0,,{\an5\pos(960,862)\org(960,862)\frz3\p1\1c&H0000DAFF&\bord0\shad7\4c&H00181111&\4a&H80&\fscx0\fscy85\t(0,150,\fscx106\fscy100)\t(150,230,\fscx100)}m 0 0 l 651 0 l 651 147 l 0 147{\p0}
+Dialogue: 1,0:00:36.66,0:00:40.00,Key,,0,0,0,,{\an5\pos(960.0,850.0)\org(960,862)\frz3\1c&H00181111&\bord0\shad0\alpha&HFF&\fscx140\fscy140\t(60,170,\alpha&H00&\fscx95\fscy95)\t(170,260,\fscx100\fscy100)}¡CRITERIO!

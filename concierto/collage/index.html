@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Criterio collage</title>
+<!--
+  Mixed-media lyric overlay for the Criterio concert video (1920x1080, 40 s, 24 fps).
+  window.render(t) draws the frame at time t. ?layer=front|back renders one layer:
+  "back" holds the chat bubbles that rise from behind the dancers (composited under a
+  blue key of the cloaks), "front" holds everything else. Singer positions come from
+  the red-coat track of the final video, so nothing is placed over him.
+-->
+<style>
+@font-face{font-family:"Fraunces";src:url(fonts/Fraunces-SoftBlack.ttf)}
+@font-face{font-family:"Marker";src:url(fonts/PermanentMarker.ttf)}
+@font-face{font-family:"Martian";src:url(fonts/MartianMonowght500.ttf)}
+@font-face{font-family:"Nunito";src:url(fonts/NunitoSans-Black.ttf);font-weight:900}
+@font-face{font-family:"Nunito";src:url(fonts/NunitoSanswght800.ttf);font-weight:800}
+:root{--cream:#FFF6E6;--yellow:#ffda00;--iris:#2727e6;--dark:#111118;--sky:#91d8ec;--paper:#fffdf7}
+html,body{margin:0;width:1920px;height:1080px;overflow:hidden;background:transparent}
+#stage{position:absolute;inset:0;overflow:hidden}
+#world{position:absolute;inset:0;transform-origin:960px 560px}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:999}
+.it{position:absolute!important;left:0;top:0;visibility:hidden}
+.hero{font-family:Fraunces;color:var(--cream);line-height:1;white-space:nowrap}
+.hero.key{color:var(--yellow)}
+.grain{position:absolute;inset:0;background:url(noise.png);pointer-events:none}
+.shadow{filter:drop-shadow(0 12px 14px rgba(17,17,24,.45))}
+.strip{position:relative;font-family:Fraunces;color:var(--dark);background:var(--yellow);line-height:1;white-space:nowrap}
+.pill{display:flex;align-items:center;gap:14px;font:500 24px Martian;letter-spacing:.06em;padding:15px 26px 15px 22px;border-radius:999px;white-space:nowrap;box-shadow:0 8px 22px rgba(0,0,0,.3)}
+.pill.dark{background:var(--dark);color:#fff}
+.pill.light{background:#fff;color:var(--dark)}
+.pill .dot{width:14px;height:14px;border-radius:50%;background:var(--yellow);display:block}
+.note{font-family:Marker;color:var(--cream);font-size:64px;line-height:1.08;white-space:nowrap;text-shadow:0 4px 16px rgba(0,0,0,.55)}
+.mk{position:absolute;left:0;top:0;overflow:visible}
+.mk path{fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;filter:drop-shadow(0 3px 5px rgba(0,0,0,.35))}
+.tag{position:relative;isolation:isolate;color:var(--dark);border-radius:8px;white-space:nowrap;box-shadow:0 5px 0 rgba(0,0,0,.08),0 16px 28px rgba(0,0,0,.4)}
+.tape{position:absolute;left:50%;background:rgba(255,248,225,.8)}
+.bub{position:relative;background:#fff;color:var(--dark);font:800 46px Nunito;padding:16px 26px 16px 28px;border-radius:30px 30px 30px 8px;box-shadow:0 12px 26px rgba(0,0,0,.38);white-space:nowrap;display:flex;align-items:flex-end;gap:14px}
+.bub .tm{font:500 17px Martian;color:#8b8b98;margin-bottom:7px}
+.bub .tail{position:absolute;left:-13px;bottom:0;width:28px;height:26px;background:#fff;clip-path:polygon(100% 0,100% 100%,0 100%)}
+.ico{position:relative;width:200px;height:200px}
+.ico .disc{width:200px;height:200px;border-radius:50%;background:var(--paper);box-shadow:0 0 0 8px #fff,0 16px 32px rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.ico .badge{position:absolute;right:-26px;top:-18px;min-width:88px;height:88px;padding:0 16px;box-sizing:border-box;border-radius:44px;background:var(--yellow);color:var(--dark);font:900 46px/80px Nunito;text-align:center;border:4px solid #fff;box-shadow:0 6px 14px rgba(0,0,0,.35)}
+.obub{position:relative;background:var(--iris);color:#fff;border-radius:44px 44px 10px 44px;padding:24px 40px 20px;box-shadow:0 18px 36px rgba(0,0,0,.42);width:520px}
+.obub .lbl{font:500 20px Martian;letter-spacing:.1em;color:var(--sky);margin-bottom:8px}
+.obub .txt{font:900 78px/1.02 Nunito;min-height:160px}
+.obub .txt span{display:inline-block;transform-origin:50% 80%;margin-right:.22em}
+.obub .meta{display:flex;justify-content:flex-end;align-items:center;gap:8px;font:500 20px Martian;color:#c9d2ff;margin-top:4px}
+.obub .tail{position:absolute;right:-20px;bottom:0;width:40px;height:36px;background:var(--iris);clip-path:polygon(0 0,100% 100%,0 100%)}
+.rcpt{width:392px;background:#fffdf6;color:var(--dark);font:500 25px/1.55 Martian;padding:30px 32px 58px;position:relative;isolation:isolate;box-sizing:border-box}
+.rcpt .hd{font:900 36px Nunito;margin-bottom:4px}
+.rcpt .sep{border-top:3px dashed rgba(17,17,24,.5);margin:10px 0}
+.rcpt .ln{display:flex;justify-content:space-between;align-items:center}
+.stamp{position:absolute;right:26px;bottom:74px;font:900 74px/1 Nunito;color:var(--iris);border:7px solid var(--iris);border-radius:14px;padding:6px 20px 8px;letter-spacing:.04em}
+.ntf{width:800px;box-sizing:border-box;background:rgba(255,255,255,.97);border-radius:36px;padding:22px 30px 22px 22px;display:flex;gap:22px;align-items:center;box-shadow:0 18px 44px rgba(0,0,0,.4)}
+.ntf .ic{width:92px;height:92px;flex:none;border-radius:22px;background:var(--iris);display:flex;align-items:center;justify-content:center}
+.ntf .app{font:500 19px Martian;color:#6b6b7a;letter-spacing:.08em}
+.ntf .ttl{font:900 40px/1.15 Nunito;color:var(--dark);display:flex;align-items:center;gap:10px}
+.ntf .sub{font:800 26px Nunito;color:#55556a}
+.pola{width:400px;background:#fbfaf6;padding:22px 22px 0;box-sizing:border-box;box-shadow:0 20px 40px rgba(0,0,0,.5);position:relative;isolation:isolate}
+.pola .photo{position:relative;width:356px;height:356px;overflow:hidden;background:#6e4a2f}
+.pola .table{position:absolute;inset:0;background:repeating-linear-gradient(8deg,#7a5234 0 18px,#6a4529 18px 40px,#80583a 40px 52px)}
+.pola .menu{position:absolute;left:46px;top:26px;width:268px;height:318px;background:#f4ecda;transform:rotate(5deg);box-shadow:0 10px 18px rgba(0,0,0,.5);padding:20px 22px;box-sizing:border-box}
+.pola .mt{font:50px/1 Fraunces;color:#2b2320;text-align:center;margin-bottom:16px}
+.pola .mi{display:flex;align-items:baseline;gap:6px;font:26px Marker;color:#2b2320;margin:12px 0}
+.pola .mi b{flex:1;border-bottom:3px dotted rgba(43,35,32,.6)}
+.pola .glare{position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,0) 30%,rgba(255,255,255,.26) 42%,rgba(255,255,255,0) 56%)}
+.pola .vig{position:absolute;inset:0;box-shadow:inset 0 0 80px rgba(0,0,0,.6)}
+.pola .cap{font:46px Marker;color:#1c1c24;text-align:center;padding:12px 0 18px}
+.cta{display:flex;align-items:center;gap:20px;background:var(--dark);color:#fff;font:900 48px Nunito;padding:20px 40px 22px 26px;border-radius:999px;white-space:nowrap;box-shadow:0 14px 34px rgba(0,0,0,.45)}
+.cta .go{width:64px;height:64px;border-radius:50%;background:var(--yellow);display:flex;align-items:center;justify-content:center}
+.cta b{color:var(--yellow)}
+</style></head>
+<body><div id="stage"><div id="world"></div><div id="flash"></div></div>
+<script>
+const Q = new URLSearchParams(location.search), LAYER = Q.get('layer') || 'all';
+const BEAT = 0.46512, B0 = 23.58;                 // 129 BPM grid anchored on the drop
+const C = {cream:'#FFF6E6', yellow:'#ffda00', iris:'#2727e6', dark:'#111118', sky:'#91d8ec'};
+const FLASHES = [3.92, 22.22, 23.56, 30.56, 36.66];
+
+const clamp = (v, a = 0, b = 1) => v < a ? a : v > b ? b : v;
+const E = {
+  expo: t => t >= 1 ? 1 : 1 - Math.pow(2, -10 * t),
+  back: t => 1 + 2.9 * Math.pow(t - 1, 3) + 1.9 * Math.pow(t - 1, 2),
+  inCubic: t => t * t * t,
+  inBack: t => 2.7 * t * t * t - 1.7 * t * t,
+  outCubic: t => 1 - Math.pow(1 - t, 3),
+  inOut: t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2,
+};
+const ENT = {pop:.24, slam:.2, rise:.4, riseFar:.55, slideL:.34, slideR:.34, drop:.36, fade:.2, wipe:.6, spin:.5, none:0};
+const EX = {shrink:.18, flyUp:.32, whipL:.24, whipR:.24, fade:.25, zoom:.22, none:0};
+
+function rng(seed) {
+  return () => {
+    seed = seed + 0x6D2B79F5 | 0;
+    let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+    t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  };
+}
+function el(tag, cls, html) {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (html != null) e.innerHTML = html;
+  return e;
+}
+const ctx = document.createElement('canvas').getContext('2d');
+function measure(txt, size, fam = 'Fraunces', wt = '') {
+  ctx.font = `${wt} ${size}px ${fam}`.trim();
+  return ctx.measureText(txt).width;
+}
+const fit = (txt, size, maxW, fam, wt) => Math.min(size, size * maxW / measure(txt, size, fam, wt));
+
+// ---------- timeline engine ----------
+const world = document.getElementById('world'), flashEl = document.getElementById('flash');
+const items = [];
+function add(o) {
+  const d = Object.assign({x:960, y:540, r:0, s:1, ax:.5, ay:.5, t0:0, t1:1e9, ent:'pop', ex:'shrink',
+                           fl:1, bt:0, layer:'front', z:10, punch:[], dist:300}, o);
+  d.ph = ((items.length + 1) * 0.61803) % 1;
+  if (d.tilt == null) d.tilt = [-10, 8, -7, 9][items.length % 4];
+  d.el.classList.add('it');
+  d.el.style.zIndex = d.z;
+  d.el.style.transformOrigin = `${d.ax * 100}% ${d.ay * 100}%`;
+  world.appendChild(d.el);
+  items.push(d);
+  return d;
+}
+
+function worldTf(t) {   // gentle drift so the graphics ride the camera move of each shot
+  let s = 1, dx = 0, dy = 0;
+  if (t < 8.375) dy = 14 * t / 8.375;
+  else if (t < 16.83) s = 1 + 0.035 * (t - 8.375) / 8.455;
+  else if (t < 23.54) s = 1 + 0.05 * (t - 16.83) / 6.71;
+  else if (t < 31) dx = 30 - 60 * (t - 23.54) / 7.46;
+  else dy = 24 * (t - 31) / 9;
+  return `translate(${dx.toFixed(2)}px,${dy.toFixed(2)}px) scale(${s.toFixed(4)})`;
+}
+
+function render(t) {
+  world.style.transform = worldTf(t);
+  for (const d of items) {
+    const ed = d.ed ?? ENT[d.ent], xd = d.xd ?? EX[d.ex];
+    const vis = (LAYER === 'all' || d.layer === LAYER) && t >= d.t0 && t < d.t1 + xd;
+    if (!vis) { d.el.style.visibility = 'hidden'; continue; }
+    let x = d.x, y = d.y, r = d.r, s = d.s, op = 1;
+    const p = ed > 0 ? clamp((t - d.t0) / ed) : 1, ep = E.expo(p);
+    switch (d.ent) {
+      case 'pop': s *= E.back(p); r += (1 - ep) * d.tilt; op = clamp(p * 5); break;
+      case 'slam': s *= 1 + (1 - ep) * 0.85; r += (1 - ep) * d.tilt * .5; op = clamp(p * 6); break;
+      case 'rise': y += (1 - ep) * 110; s *= .9 + .1 * ep; op = clamp(p * 3); break;
+      case 'riseFar': y += (1 - ep) * d.dist; r += (1 - ep) * d.tilt * .6; break;
+      case 'slideL': x -= (1 - ep) * 420; op = clamp(p * 3); break;
+      case 'slideR': x += (1 - ep) * 420; op = clamp(p * 3); break;
+      case 'drop': y -= (1 - E.back(p)) * 260; r += (1 - ep) * d.tilt; op = clamp(p * 4); break;
+      case 'spin': s *= E.back(p); r += (1 - ep) * -140; op = clamp(p * 4); break;
+      case 'fade': op = p; break;
+      case 'wipe': d.el.style.clipPath = p >= 1 ? 'none' : `inset(-30% ${((1 - E.outCubic(p)) * 100).toFixed(2)}% -30% -8%)`; break;
+    }
+    if (t >= d.t1) {
+      const q = xd > 0 ? clamp((t - d.t1) / xd) : 1;
+      switch (d.ex) {
+        case 'shrink': s *= Math.max(0, 1 - E.inBack(q)); break;
+        case 'flyUp': y -= E.inCubic(q) * 900; r += q * 10; break;
+        case 'whipL': x -= E.inCubic(q) * 1500; r -= q * 14; break;
+        case 'whipR': x += E.inCubic(q) * 1500; r += q * 14; break;
+        case 'fade': op *= 1 - q; break;
+        case 'zoom': s *= 1 + q * .7; op *= 1 - q; break;
+      }
+    }
+    if (d.fl) {
+      y += Math.sin(2 * Math.PI * (0.42 * t + d.ph)) * 4 * d.fl;
+      r += Math.sin(2 * Math.PI * (0.27 * t + d.ph * 1.7)) * 0.7 * d.fl;
+    }
+    if (d.bt && t > 8.6) {
+      const ph = (((t - B0) / BEAT) % 1 + 1) % 1;
+      s *= 1 + d.bt * 0.045 * Math.exp(-ph * 8);
+    }
+    for (const tp of d.punch) if (t >= tp) s *= 1 + 0.14 * Math.exp(-(t - tp) * 12);
+    if (d.upd) {
+      const o = d.upd(t, d, p) || {};
+      x += o.dx || 0; y += o.dy || 0; r += o.dr || 0; s *= o.ds ?? 1;
+      if (o.op != null) op *= o.op;
+    }
+    d.el.style.visibility = 'visible';
+    d.el.style.opacity = op.toFixed(3);
+    d.el.style.transform = `translate(${x.toFixed(1)}px,${y.toFixed(1)}px) translate(${-d.ax * 100}%,${-d.ay * 100}%) rotate(${r.toFixed(2)}deg) scale(${Math.max(0, s).toFixed(4)})`;
+  }
+  let f = 0;
+  for (const tf of FLASHES) if (t >= tf) f = Math.max(f, 0.5 * Math.exp(-(t - tf) * 16));
+  flashEl.style.opacity = LAYER === 'back' ? 0 : f.toFixed(3);
+}
+
+// ---------- pieces ----------
+function extrude(size) {
+  const d = Math.max(4, Math.round(size * 0.05)), a = [];
+  for (let i = 1; i <= d; i++) a.push(`${(i * 0.7).toFixed(1)}px ${i}px 0 ${C.iris}`);
+  a.push(`${(d * .7 + 6).toFixed(1)}px ${d + 12}px 26px rgba(17,17,24,.5)`);
+  return a.join(',');
+}
+function hero(txt, size, key) {
+  const e = el('div', 'hero' + (key ? ' key' : ''));
+  e.textContent = txt;
+  e.style.fontSize = size + 'px';
+  e.style.textShadow = extrude(size);
+  return e;
+}
+function torn(seed, jag = 7, n = 24) {
+  const R = rng(seed), p = [];
+  for (let i = 0; i <= n; i++) p.push(`${(i / n * 100).toFixed(1)}% ${(R() * jag).toFixed(1)}%`);
+  for (let i = 1; i < 4; i++) p.push(`${(100 - R() * 1.6).toFixed(1)}% ${i * 25}%`);
+  for (let i = n; i >= 0; i--) p.push(`${(i / n * 100).toFixed(1)}% ${(100 - R() * jag).toFixed(1)}%`);
+  for (let i = 3; i > 0; i--) p.push(`${(R() * 1.6).toFixed(1)}% ${i * 25}%`);
+  return `polygon(${p.join(',')})`;
+}
+function strip(txt, size, seed, bg = C.yellow, color = C.dark) {
+  const w = el('div', 'shadow'), s = el('div', 'strip');
+  s.style.cssText = `font-size:${size}px;padding:${size * .1}px ${size * .2}px ${size * .16}px;background:${bg};color:${color};clip-path:${torn(seed)}`;
+  s.textContent = txt;
+  s.appendChild(el('div', 'grain'));
+  w.appendChild(s);
+  return w;
+}
+const stripW = (txt, size) => measure(txt, size) + size * .4;
+function tape(seed, w = 124, h = 40) {
+  const R = rng(seed * 7 + 3), t = el('div', 'tape'), p = [];
+  for (let i = 0; i <= 6; i++) p.push(`${(R() * 7).toFixed(1)}% ${(i / 6 * 100).toFixed(1)}%`);
+  for (let i = 6; i >= 0; i--) p.push(`${(93 + R() * 7).toFixed(1)}% ${(i / 6 * 100).toFixed(1)}%`);
+  t.style.cssText = `top:${-h * .55}px;width:${w}px;height:${h}px;margin-left:${-w / 2}px;transform:rotate(${(R() * 18 - 9).toFixed(1)}deg);clip-path:polygon(${p.join(',')})`;
+  return t;
+}
+function tag(txt, size, seed, bg = '#fffdf7') {
+  const w = el('div', 'tag');
+  w.style.cssText = `font:900 ${size}px Nunito;background:${bg};padding:${size * .22}px ${size * .46}px ${size * .28}px`;
+  w.textContent = txt;
+  w.appendChild(el('div', 'grain'));
+  w.appendChild(tape(seed));
+  return w;
+}
+function pill(kind, html) { return el('div', 'pill ' + kind, html); }
+const CHECK = (w, col) => `<svg width="${w}" height="${w}" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="${col}" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const CHECK2 = (w, col) => `<svg width="${w * 1.35}" height="${w}" viewBox="0 0 32 24"><path d="M2 12.5l5 5L18 6.5M12 17.5L23 6.5" fill="none" stroke="${col}" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const GLYPH = (w, fill, dots) => `<svg width="${w}" height="${w}" viewBox="0 0 100 100"><path d="M50 12c-23 0-41 15-41 34 0 10 5 19 13 25l-4 16 17-9c5 1 10 2 15 2 23 0 41-15 41-34S73 12 50 12z" fill="${fill}"/><circle cx="32" cy="46" r="6.5" fill="${dots}"/><circle cx="50" cy="46" r="6.5" fill="${dots}"/><circle cx="68" cy="46" r="6.5" fill="${dots}"/></svg>`;
+
+function markFull(d, color, sw) {           // hand-drawn marker stroke in frame coordinates
+  const e = el('div');
+  e.style.cssText = 'width:1920px;height:1080px';
+  e.innerHTML = `<svg class="mk" width="1920" height="1080"><path pathLength="1" d="${d}" stroke="${color}" stroke-width="${sw}"/></svg>`;
+  return e;
+}
+const drawOn = (ts, dur) => (t, d) => {
+  d.el.querySelector('path').style.strokeDashoffset = (1 - E.outCubic(clamp((t - ts) / dur))).toFixed(4);
+};
+function scribbleEllipse(cx, cy, rx, ry, seed) {  // loose 1.2-turn marker loop
+  const R = rng(seed), pts = [];
+  for (let i = 0; i <= 30; i++) {
+    const a = -2.2 + i / 30 * Math.PI * 2.35, k = 1 + (R() - .5) * .08;
+    pts.push(`${(cx + Math.cos(a) * rx * k).toFixed(1)} ${(cy + Math.sin(a) * ry * k).toFixed(1)}`);
+  }
+  return 'M' + pts.join(' L');
+}
+
+function halftone(r, col, id) {
+  const e = el('div');
+  e.innerHTML = `<svg width="${2 * r}" height="${2 * r}"><defs><pattern id="${id}" width="22" height="22" patternUnits="userSpaceOnUse" patternTransform="rotate(18)"><circle cx="11" cy="11" r="6" fill="${col}"/></pattern><radialGradient id="${id}g"><stop offset="0" stop-color="#fff"/><stop offset=".7" stop-color="#fff"/><stop offset="1" stop-color="#000"/></radialGradient><mask id="${id}m"><circle cx="${r}" cy="${r}" r="${r}" fill="url(#${id}g)"/></mask></defs><circle cx="${r}" cy="${r}" r="${r}" fill="url(#${id})" mask="url(#${id}m)"/></svg>`;
+  return e;
+}
+function burst(r1, r2, n, id) {
+  const pts = [];
+  for (let i = 0; i < n * 2; i++) {
+    const a = i / (n * 2) * Math.PI * 2 - Math.PI / 2, r = i % 2 ? r2 : r1;
+    pts.push(`${(r1 + Math.cos(a) * r).toFixed(1)},${(r1 + Math.sin(a) * r).toFixed(1)}`);
+  }
+  const e = el('div');
+  e.innerHTML = `<svg width="${2 * r1}" height="${2 * r1}"><defs><pattern id="${id}" width="20" height="20" patternUnits="userSpaceOnUse" patternTransform="rotate(24)"><circle cx="10" cy="10" r="4.5" fill="#fff" fill-opacity=".22"/></pattern></defs><polygon points="${pts}" fill="${C.iris}"/><polygon points="${pts}" fill="url(#${id})"/></svg>`;
+  e.style.filter = 'drop-shadow(0 16px 26px rgba(0,0,0,.4))';
+  return e;
+}
+function ring(r, band, txt) {
+  const S = 2 * (r + band), c = S / 2, L = 2 * Math.PI * r;
+  const e = el('div');
+  e.innerHTML = `<svg width="${S}" height="${S}"><defs><path id="ringp" d="M ${c - r},${c} a ${r},${r} 0 1,1 ${2 * r},0 a ${r},${r} 0 1,1 ${-2 * r},0"/></defs>
+    <circle cx="${c}" cy="${c}" r="${r}" fill="none" stroke="rgba(17,17,24,.82)" stroke-width="${band}"/>
+    <circle cx="${c}" cy="${c}" r="${r - band / 2 + 3}" fill="none" stroke="${C.yellow}" stroke-width="3"/>
+    <circle cx="${c}" cy="${c}" r="${r + band / 2 - 3}" fill="none" stroke="${C.yellow}" stroke-width="3"/>
+    <text font-family="Martian" font-size="31" fill="${C.yellow}" dy="11"><textPath href="#ringp" textLength="${L.toFixed(1)}" lengthAdjust="spacing">${txt}</textPath></text></svg>`;
+  e.style.filter = 'drop-shadow(0 10px 22px rgba(0,0,0,.4))';
+  return e;
+}
+
+// one lyric line: words = [text, t0, kind] with kind 1 = yellow word, 2 = word on a yellow torn strip
+function line(words, cx, cy, size, o = {}) {
+  const gap = size * .26;
+  const ws = words.map(w => w[2] === 2 ? stripW(w[0], size) : measure(w[0], size));
+  let x = cx - (ws.reduce((a, b) => a + b, 0) + gap * (words.length - 1)) / 2;
+  return words.map((w, i) => {
+    const node = w[2] === 2 ? strip(w[0], size, 11 + i + Math.round(w[1] * 10)) : hero(w[0], size, w[2] === 1);
+    const it = add(Object.assign({el: node, x: x + ws[i] / 2, y: cy, t0: w[1], bt: 1, z: 30}, o,
+                                 w[2] === 2 ? {ent: o.ent || 'slam', r: (o.r || 0) - 3} : {}));
+    it.cx0 = x; it.w = ws[i];
+    x += ws[i] + gap;
+    return it;
+  });
+}
+
+// ---------- storyboard ----------
+function polaroid() {
+  const e = el('div', 'pola');
+  e.innerHTML = `<div class="photo"><div class="table"></div><div class="menu"><div class="mt">MENÚ</div>
+    <div class="mi"><span>hamburguesa</span><b></b><span>15</span></div>
+    <div class="mi"><span>papas</span><b></b><span>8</span></div>
+    <div class="mi"><span>limonada</span><b></b><span>12</span></div>
+    <div class="mi"><span>combo</span><b></b><span>¿?</span></div></div>
+    <div class="glare"></div><div class="vig"></div></div><div class="cap">menú en foto</div><div class="grain"></div>`;
+  e.appendChild(tape(5, 150, 44));
+  return e;
+}
+function chatIcon() {
+  const e = el('div', 'ico');
+  e.innerHTML = `<div class="disc">${GLYPH(132, C.iris, '#fff')}<div class="grain"></div></div><div class="badge">1</div>`;
+  return e;
+}
+function bub(txt, time) {
+  return el('div', 'bub', `<span>${txt}</span><span class="tm">${time}</span><i class="tail"></i>`);
+}
+function obub() {
+  return el('div', 'obub', `<div class="lbl">CRITERIO</div><div class="txt"><span>Cuéntame</span><br><span>qué</span> <span>vendes</span></div><div class="meta"><span>9:41</span><span class="ck">${CHECK2(24, C.sky)}</span></div><i class="tail"></i>`);
+}
+function receipt() {
+  const e = el('div', 'rcpt');
+  e.innerHTML = `<div class="ln hd"><span>PEDIDO</span><span>#0428</span></div><div class="sep"></div>
+    <div class="ln r"><span>2 × hamburguesa</span></div><div class="ln r"><span>1 × papas</span></div><div class="ln r"><span>1 × limonada</span></div>
+    <div class="sep r"></div><div class="ln r"><span>entrega</span><span>domicilio</span></div><div class="ln r"><span>pago</span><span>listo ${CHECK(24, C.iris)}</span></div>
+    <div class="stamp">LISTO</div><div class="grain"></div>`;
+  const zz = [];
+  for (let i = 0; i <= 24; i++) zz.push(`${(100 - i / 24 * 100).toFixed(2)}% ${i % 2 ? 'calc(100% - 16px)' : '100%'}`);
+  e.style.clipPath = `polygon(0 0,100% 0,${zz.join(',')})`;
+  const w = el('div', 'shadow');
+  w.appendChild(e);
+  return w;
+}
+function banner() {
+  return el('div', 'ntf', `<div class="ic">${GLYPH(64, '#fff', C.iris)}</div><div><div class="app">CRITERIO · AHORA</div><div class="ttl">Nuevo pedido listo ${CHECK(34, '#1faa59')}</div><div class="sub">2 × hamburguesa · 1 × papas · 1 × limonada</div></div>`);
+}
+
+function build() {
+  // global labels
+  add({el: pill('dark', '<i class="dot"></i>CRITERIO'), x: 64, y: 66, ax: 0, t0: .3, ent: 'slideL', t1: 36.3, ex: 'fade', fl: 0, z: 60});
+  add({el: pill('light', '@criterio_ai'), x: 1856, y: 66, ax: 1, t0: .45, ent: 'slideR', t1: 36.3, ex: 'fade', fl: 0, z: 60});
+
+  // ===== A 0-8.375: crane down to the stage; singer tiny at (942, 530), right third is empty sand
+  add({el: el('div', 'note', 'si tu negocio<br>vende por chat...'), x: 1500, y: 660, r: -4, t0: .8, ent: 'wipe', ed: .7, t1: 3.62, ex: 'whipR', z: 20});
+  add({el: markFull('M1238 628 C1180 590 1118 578 1052 574 M1052 574 l30 -21 M1052 574 l29 19', C.yellow, 9), fl: 0,
+       t0: 1.45, ent: 'none', t1: 3.62, ex: 'fade', upd: drawOn(1.45, .4), z: 19});
+  add({el: polaroid(), x: 410, y: 380, r: -7, t0: 3.92, ent: 'slam', tilt: -10, t1: 6.86, ex: 'whipL', z: 15});
+  add({el: halftone(250, C.iris, 'htA'), x: 1450, y: 440, t0: 3.92, ent: 'pop', t1: 6.9, ex: 'shrink', z: 5, fl: .5,
+       upd: t => ({dr: (t - 3.92) * 8})});
+  line([['Menú', 3.92]], 1450, 335, 210, {t1: 6.9});
+  line([['en', 5.01], ['foto,', 5.29]], 1450, 545, 150, {t1: 6.9});
+  line([['sumas', 6.99]], 1450, 335, 190, {t1: 8.16, ex: 'whipR'});
+  line([['a', 7.39], ['mano', 7.59, 1]], 1450, 535, 190, {t1: 8.16, ex: 'whipR'});
+  const MATH = '15 + 8 + 12 = ¿?', MS = 76;
+  const math = el('div', 'note', MATH);
+  math.style.cssText = `color:${C.yellow};font-size:${MS}px`;
+  add({el: math, x: 420, y: 400, r: -5, t0: 6.99, ent: 'wipe', ed: .75, t1: 8.16, ex: 'whipL', z: 20});
+  const mw = measure(MATH, MS, 'Marker'), qx = 420 - mw / 2 + measure('15 + 8 + 12 = ', MS, 'Marker') + measure('¿?', MS, 'Marker') / 2;
+  add({el: markFull(scribbleEllipse(qx, 408 - (qx - 420) * .087, 70, 58, 3), C.cream, 7), fl: 0,
+       t0: 7.72, ent: 'none', t1: 8.16, ex: 'fade', xd: .15, upd: drawOn(7.72, .3), z: 21});
+
+  // ===== B 8.375-16.83: dolly; singer (940, 440-690); sky band y 160-470; dancers band y 480-760
+  const counts = [[8.70, '1'], [9.16, '4'], [9.63, '9'], [10.09, '17'], [10.56, '28'], [11.02, '46'], [11.49, '73'], [11.95, '99+']];
+  add({el: chatIcon(), x: 960, y: 245, t0: 8.5, ent: 'pop', t1: 12.2, ex: 'shrink', z: 35, bt: 1, upd: (t, d) => {
+    let c = null, tc = -9;
+    for (const [tt, v] of counts) if (t >= tt) { c = v; tc = tt; }
+    const b = d.el.querySelector('.badge'), u = t - tc;
+    b.style.display = c ? 'block' : 'none';
+    if (c) { b.textContent = c; b.style.transform = `scale(${(1 + .4 * Math.exp(-u * 14)).toFixed(3)})`; }
+    return {dr: c ? 9 * Math.exp(-u * 9) * Math.sin(u * 55) : 0};
+  }});
+  add({el: markFull('M860 150 L826 116 M960 108 L960 64 M1060 150 L1094 116 M818 236 L770 230 M1102 236 L1150 230', C.yellow, 8),
+       fl: 0, t0: 11.95, ent: 'none', t1: 12.2, ex: 'fade', xd: .12, upd: drawOn(11.95, .16), z: 34});
+  const BB = [['hola', '8:41', 330, 250, -4], ['¿precio?', '8:41', 1580, 240, 3], ['¿tienen domicilio?', '8:42', 520, 360, 2],
+              ['¿me pasas el menú?', '8:42', 1420, 350, -3], ['¿siguen abiertos?', '8:43', 300, 450, 3], ['holaaa??', '8:43', 1640, 458, -2],
+              ['¿cuánto el envío?', '8:44', 560, 172, -2], ['???', '8:44', 1300, 176, 4]];
+  const bbt = [8.70, 9.16, 9.63, 10.09, 10.56, 11.02, 11.49, 11.95];
+  BB.forEach((b, i) => add({el: bub(b[0], b[1]), x: b[2], y: b[3], r: b[4], t0: bbt[i] - .08, ent: 'riseFar', dist: 330,
+                            t1: 12.12 + i * .015, ex: 'flyUp', layer: 'back', z: 20 + i, fl: .8, bt: .6}));
+  const bL = {t1: 16.34, ex: 'whipL', punch: [15.0]}, bR = {t1: 16.4, ex: 'whipR', punch: [15.0]};
+  line([['Tu', 12.34]], 250, 212, 120, bL);
+  line([['negocio', 12.64]], 450, 362, 190, bL);
+  line([['a', 13.46], ['punta', 13.69], ['de', 14.19]], 1480, 232, 120, bR);
+  line([['chat', 14.49, 2]], 1480, 432, 210, Object.assign({r: -1}, bR));
+
+  // ===== C 16.83-23.54: push-in; singer x 850-1010 growing to 450-1150; monolith top right
+  add({el: obub(), x: 500, y: 250, r: -2, t0: 16.6, ent: 'pop', tilt: -8, t1: 19.28, ex: 'flyUp', z: 30, upd: (t, d) => {
+    const sp = d.el.querySelectorAll('.txt span'), wt = [16.69, 17.76, 18.19];
+    sp.forEach((s, i) => {
+      const u = clamp((t - wt[i]) / .22);
+      s.style.opacity = t >= wt[i] ? 1 : 0;
+      s.style.transform = `scale(${E.back(u).toFixed(3)})`;
+    });
+    const ck = d.el.querySelector('.ck');
+    ck.style.opacity = clamp((t - 18.75) / .12);
+  }});
+  line([['¿qué', 17.76]], 1560, 290, 140, {t1: 19.3, ex: 'whipR'});
+  line([['vendes?', 18.19, 2]], 1560, 455, 130, {t1: 19.3, ex: 'whipR'});
+  const TG = [['comida', 330, 470, -7], ['ropa', 490, 250, 5], ['tortas', 730, 105, -4], ['flores', 1190, 105, 5],
+              ['belleza', 1440, 250, -5], ['tu negocio', 1590, 470, 4, 1]];
+  const tgt = [19.39, 19.86, 20.32, 20.79, 21.25, 21.72];
+  TG.forEach((g, i) => add({el: tag(g[0], g[4] ? 70 : 58, 40 + i, g[4] ? C.yellow : undefined), x: g[1], y: g[2], r: g[3],
+                            t0: tgt[i] - .05, ent: 'drop', t1: 22.0 + i * .025, ex: 'shrink', z: 25, bt: 1}));
+  add({el: burst(330, 250, 14, 'bC'), x: 1520, y: 612, t0: 22.18, ent: 'pop', t1: 23.84, ex: 'zoom', z: 20, fl: .4,
+       punch: [23.58], upd: t => ({dr: (t - 22.18) * 22})});
+  add({el: hero('¡Criterio!', fit('¡Criterio!', 175, 700), 1), x: 1520, y: 606, r: -9, t0: 22.22, ent: 'slam', tilt: -12,
+       t1: 23.86, ex: 'zoom', z: 21, punch: [23.58]});
+
+  // ===== D 23.54-31: orbit; sky y 0-560; singer small (910-960, 430-690)
+  add({el: receipt(), x: 420, y: 330, r: -5, t0: 24.12, ent: 'drop', tilt: -12, t1: 26.17, ex: 'none', z: 25, upd: (t, d) => {
+    const rows = d.el.querySelectorAll('.r'), rt = [24.45, 24.7, 24.95, 25.15, 25.2, 25.4];
+    rows.forEach((row, i) => {
+      const u = clamp((t - rt[i]) / .18);
+      row.style.opacity = u.toFixed(3);
+      row.style.transform = `translateX(${((1 - E.expo(u)) * -30).toFixed(1)}px)`;
+    });
+    const st = d.el.querySelector('.stamp'), us = clamp((t - 25.6) / .16);
+    st.style.opacity = t >= 25.6 ? .92 : 0;
+    st.style.transform = `rotate(-14deg) scale(${(1 + (1 - E.expo(us)) * 1.4).toFixed(3)})`;
+    const hit = t >= 25.6 ? 6 * Math.exp(-(t - 25.6) * 14) * Math.sin((t - 25.6) * 60) : 0;
+    const u = clamp((t - 25.95) / .22), k = E.inOut(u);
+    return {dx: 540 * k, dy: -205 * k, ds: 1 - .78 * u, op: 1 - u * u, dr: hit + 6 * u};
+  }});
+  line([['Arman', 24.19], ['el', 24.86]], 1460, 232, 125, {t1: 25.93});
+  const ped = line([['pedido,', 25.14, 1]], 1460, 398, 195, {t1: 25.93})[0];
+  add({el: markFull(scribbleEllipse(1460, 405, ped.w / 2 + 50, 120, 9), C.cream, 7), fl: 0, t0: 25.3, ent: 'none',
+       t1: 25.93, ex: 'fade', xd: .12, upd: drawOn(25.3, .3), z: 29});
+  add({el: banner(), x: 960, y: 128, t0: 26.0, ent: 'drop', tilt: 0, t1: 28.1, ex: 'flyUp', z: 40, fl: .5});
+  line([['te', 25.99], ['llega', 26.19]], 470, 392, 150, {t1: 28.14, ex: 'whipL'});
+  line([['al', 26.72], ['chat', 27.09, 2]], 1470, 392, 160, {t1: 28.18, ex: 'whipR'});
+  line([['Trabaja', 28.24]], 440, 262, 175, {t1: 33.2});
+  const men = line([['menos,', 28.91]], 440, 440, 150, {t1: 33.24})[0];
+  const ux0 = men.cx0 + 10, ux1 = men.cx0 + men.w - 30;
+  add({el: markFull(`M${ux0} 528 C${ux0 + 120} 516 ${ux1 - 140} 540 ${ux1} 522`, C.yellow, 10), fl: 0, t0: 29.05, ent: 'none',
+       t1: 33.24, ex: 'fade', upd: drawOn(29.05, .3), z: 29});
+  line([['vende', 29.96]], 1480, 262, 175, {t1: 33.28});
+  const mas = line([['más', 30.56, 2]], 1480, 452, 200, {t1: 33.32})[0];
+  const axx = mas.cx0 + mas.w + 60;
+  add({el: markFull(`M${axx} 540 C${axx - 6} 470 ${axx + 4} 420 ${axx} 360 M${axx} 360 l-26 34 M${axx} 360 l27 32`, C.yellow, 10),
+       fl: 0, t0: 30.66, ent: 'none', t1: 33.32, ex: 'fade', upd: drawOn(30.66, .3), z: 29});
+
+  // ===== E 31-40: crane up and away; ring framed on the singer
+  const RT = 'VENDE POR WHATSAPP EN 48 HORAS\u00a0\u00a0•\u00a0\u00a0';
+  add({el: ring(256, 74, RT + RT), x: 942, y: 588, t0: 33.4, ent: 'spin', t1: 1e9, z: 30, fl: 0,
+       upd: t => ({dr: (t - 33.4) * 26, dy: -50 * E.inOut(clamp((t - 33.4) / 3))})});
+  add({el: hero('¡Criterio!', fit('¡Criterio!', 185, 980), 1), x: 960, y: 108, r: -3, t0: 36.66, ent: 'slam', tilt: -10, z: 40, bt: 1});
+  add({el: el('div', 'cta', `<span class="go"><svg width="30" height="30" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="${C.dark}" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Escríbenos <b>@criterio_ai</b>`),
+       x: 960, y: 990, t0: 37.3, ent: 'rise', z: 40, fl: .5});
+}
+
+async function init() {
+  await Promise.all(['100px Fraunces', '64px Marker', '24px Martian', '900 40px Nunito', '800 40px Nunito']
+    .map(f => document.fonts.load(f, 'abc¿¡áéíóúñ×·•')));
+  await new Promise(r => { const i = new Image(); i.onload = i.onerror = r; i.src = 'noise.png'; });
+  build();
+  render(+(Q.get('t') || 0));
+  window.READY = true;
+}
+window.render = render;
+init();
+</script></body></html>
