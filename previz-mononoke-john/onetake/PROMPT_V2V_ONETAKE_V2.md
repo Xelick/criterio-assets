@@ -17,6 +17,12 @@ Las imágenes van en este orden:
 El look es Blade Runner 2049: Deakins, la paleta del fotograma que mandaste, ángulo bajo,
 lente gran angular y contraluz duro.
 
+Referencia de movimiento para las peleas: combos de YouTube `PdBwNDSKbJ8`, de 0:15 a 0:29. Está
+subida a Higgsfield como media `54d21e00`. El prompt describe dos combos: el del 0:18 (salto
+aéreo y cadena de cortes bajos) y el del 0:25 (patada giratoria, embestida y corte ascendente).
+Si se quiere, ese clip también puede ir como segundo video de referencia, pero puede arrastrar
+el look del videojuego.
+
 ```text
 # JOHN VS SIX MONSTERS — CARD CORRIDOR TO THE SEA, ONE TAKE (30s, video-to-video)
 A 30-second ONE-SHOT close-quarters fight at night. John — crimson coat, round gold
@@ -82,6 +88,17 @@ recoiling, scrambling, bodies twisting and reacting to every hit before they sha
 limbs, no sliding feet, no snapping between poses, no robotic or puppet-like motion, no frozen
 holds.
 
+COMBOS — the director's movement reference; reproduce their rhythm and flow as live action:
+COMBO 1, AERIAL INTO GROUND CHAIN: John springs off a surface (a wall, a pillar or the enemy's
+own raised limb), meets the enemy in the air with a cutting slash while the camera follows him
+upward, lands in a low crouch and, with zero pause, unleashes a rapid chain of four or five low
+sweeping cuts that alternate direction, stepping forward with each one, the blade leaving
+white-hot arcs, driving the enemy back.
+COMBO 2, SPIN-KICK, DASH, LAUNCHER: a spinning back kick slams the enemy away; John instantly
+dashes after it so fast the frame streaks with motion lines and the camera snaps in; a flurry of
+strikes too fast to follow, a split second of darkness, then one final rising slash that launches
+the enemy high into the air.
+
 CAMERA — strictly follow video 1, 1:1 and frame-aligned for all 30 seconds. ONE
 CONTINUOUS TAKE, NO CUTS, John always in frame. Keep every move: 0–4.3s a hard push-in from a
 frontal wide to an extreme close-up of his hand on the hilt while rolling to -34°; 4.3s a whip
@@ -113,6 +130,16 @@ RULES
    two swords.
 8. John is never hit; calm and economical. The monsters are frenzied, twitchy, predatory.
 9. No blood, no gore, no text, no subtitles, no watermarks.
+10. THE GRIP — one single-edged Japanese sword, always held correctly: John's hands wrap ONLY
+   the long red silk-wrapped handle, between the gold guard and the golden beast-mouth pommel; the
+   guard sits just in front of his front hand and the blade extends from the guard AWAY from him.
+   His hand never touches the blade, never holds the sword above the guard, never holds it upside
+   down. Sheathed, the katana sits in its black scabbard at his LEFT hip, edge up, handle pointing
+   forward. The draw: his right hand crosses his body and closes on the handle, his left hand
+   holds the scabbard mouth, his thumb pushes the guard, and the blade slides out along the
+   scabbard. Exactly ONE sword exists at any moment: before the draw there is no flame blade
+   anywhere — not on his back, not over his shoulder; the flame sword only appears by
+   transforming the katana as it leaves the scabbard.
 
 ACTION TIMING
 0–4.4s John walks out past the shrine hall and stone lanterns into the near ritual circle and
@@ -121,20 +148,22 @@ stops (3.1s); his hand closes on the hilt (2.6s); thumb pushes the guard (click 
 the card walls rise and lock into rows; the six form and metamorphose; John raises the sword
 into guard and steps forward.
 7.6–12.2s Monster 1 (the sprinter) alone: 8.7s high claw blocked on the blade, sparks; 9.3s low
-claw slipped; 10.2s overhead blow parried, John drives it back; 11.7s it overcommits a lunge →
+claw slipped; 9.5–10.6s John answers with the ground chain of COMBO 1 — four low sweeping cuts,
+stepping forward with each, white-hot arcs — driving it back; 11.7s it overcommits a lunge →
 John drops low and SWEEPS its leg → it slams onto its back at his feet (12.0s) → downward
 thrust → shatters 12.2s.
 12.2–17s the chain, John stepping forward each time: Monster 2 rushes → rising ELBOW into its
 gut → it folds → flat cut → shatters 13.0s. Monster 3 scuttles in → one clean diagonal cut →
 shatters 14.0s. Monster 4 (the brute) → combination on it alone: elbow 15.4s, knee to the ribs
 15.6s, pommel to the jaw 15.8s, backhand cut 16.0s → shatters.
-17–21s Monster 5 presses with feints (17.8s, 18.6s), John slips each; 19.5s it commits → front
-KICK to the midsection 19.6s → it flies back down the path, hits the stone 20.0s and shatters
-20.1s. 20.5s Monster 6 leaps from the torii and lands in a crouch 21.0s.
+17–21s Monster 5 presses with feints (17.8s, 18.6s), John slips each; 19.5s it commits → COMBO 2:
+a spinning back kick 19.6s slams it down the path, John dashes after it in a blur of motion
+streaks and his rising slash launches it into the air, where it shatters at 20.1s. 20.5s Monster 6 leaps from the torii and lands in a crouch 21.0s.
 21–26s the last duel, the longest exchange: John closes at a run; 22.7s high claw blocked,
 sparks; 23.0s low claw slipped; 23.3s its kick checked by John's forearm; 23.7s John's cut makes
-it jump back; 24.0s elbow staggers it; 24.4s its wide sweep — John ducks under; 24.7s rising
-cut glances off its claws, sparks; 25.1s desperate overhead lunge → 25.4s sidestep, a full spin
+it jump back; 24.0s elbow staggers it; 24.4s its wide sweep — COMBO 1: John springs up off its raised
+arm, cuts across it in mid-air, lands in a crouch and chains three low sweeping cuts
+(24.7–25.0s), sparks off its claws, driving it back toward the torii; 25.1s desperate overhead lunge → 25.4s sidestep, a full spin
 → final diagonal cut 26.0s → it shatters into the biggest storm of flakes and cyan sparks.
 26–30s John walks on through the drifting flakes toward the torii; 27.6s the flame dies and the
 sword becomes the katana; 28.0s he sheathes it (click); he passes under the torii toward the

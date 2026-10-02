@@ -20,6 +20,12 @@ Las imágenes van en este orden:
 | 4 | La espada | job `f2d00d5d` |
 | 5 | Locación estilo Blade Runner 2049 | job `d8839ed2` |
 
+Referencia de movimiento para las peleas: combos de YouTube `PdBwNDSKbJ8`, de 0:15 a 0:29. Está
+subida a Higgsfield como media `54d21e00`. El prompt describe dos combos: el del 0:18 (salto
+aéreo y cadena de cortes bajos) y el del 0:25 (patada giratoria, embestida y corte ascendente).
+Si se quiere, ese clip también puede ir como segundo video de referencia, pero puede arrastrar
+el look del videojuego.
+
 ```text
 # JOHN VS THE SHADOW-MONSTER — NIGHT SHRINE, 12 SHOTS (30s, video-to-video)
 A 30-second sword duel at night in 12 shots. John — crimson coat, round gold sunglasses —
@@ -79,6 +85,17 @@ and continuous, never a jump between shapes. No stiff
 limbs, no sliding feet, no snapping between poses, no robotic or puppet-like motion, no frozen
 holds.
 
+COMBOS — the director's movement reference; reproduce their rhythm and flow as live action:
+COMBO 1, AERIAL INTO GROUND CHAIN: John springs off a surface (a wall, a pillar or the enemy's
+own raised limb), meets the enemy in the air with a cutting slash while the camera follows him
+upward, lands in a low crouch and, with zero pause, unleashes a rapid chain of four or five low
+sweeping cuts that alternate direction, stepping forward with each one, the blade leaving
+white-hot arcs, driving the enemy back.
+COMBO 2, SPIN-KICK, DASH, LAUNCHER: a spinning back kick slams the enemy away; John instantly
+dashes after it so fast the frame streaks with motion lines and the camera snaps in; a flurry of
+strikes too fast to follow, a split second of darkness, then one final rising slash that launches
+the enemy high into the air.
+
 CAMERA — strictly follow video 1, 1:1 and frame-aligned, including its 11 CUTS at 4.28,
 7.28, 15.28, 15.44, 15.60, 16.00, 16.24, 16.96, 18.08, 21.56 and 26.00s — cut exactly there and
 nowhere else; keep every push, zoom, roll and tilt. No added transitions or shots.
@@ -90,6 +107,16 @@ RULES
    of crimson-gold sparks. Never two swords.
 3. Close quarters: claws against blade; no energy blasts, no projectiles. No blood.
 4. No text, no subtitles, no watermarks.
+5. THE GRIP — one single-edged Japanese sword, always held correctly: John's hands wrap ONLY
+   the long red silk-wrapped handle, between the gold guard and the golden beast-mouth pommel; the
+   guard sits just in front of his front hand and the blade extends from the guard AWAY from him.
+   His hand never touches the blade, never holds the sword above the guard, never holds it upside
+   down. Sheathed, the katana sits in its black scabbard at his LEFT hip, edge up, handle pointing
+   forward. The draw: his right hand crosses his body and closes on the handle, his left hand
+   holds the scabbard mouth, his thumb pushes the guard, and the blade slides out along the
+   scabbard. Exactly ONE sword exists at any moment: before the draw there is no flame blade
+   anywhere — not on his back, not over his shoulder; the flame sword only appears by
+   transforming the katana as it leaves the scabbard.
 
 SHOTS
 1 (0–4.28s) John runs straight at camera across the courtyard, coat flying, past the
@@ -102,8 +129,10 @@ crouches, at 14.3s it LAUNCHES itself at John, claws raised — the camera whips
 over, so we see exactly where the attack comes from, John's sword entering the frame.
 4 (15.28–15.44s) side wide: the shadow in mid-air arriving at John, who raises the sword.
 5 (15.44–15.60s) extreme close: claws slam the blade, sparks.
-6 (15.60–16.00s) over John's shoulder, punch-in: he shoves back with blade and free hand.
-7 (16.00–16.24s) low: the shadow thrown back through the air toward the torii.
+6 (15.60–16.00s) over John's shoulder, punch-in: he shoves the claws off his blade and whips
+into the spinning back kick of COMBO 2.
+7 (16.00–16.24s) low: the kick lands and the shadow is thrown back through the air toward the
+torii.
 8 (16.24–16.96s) still: John's back in the foreground in guard, the shadow crashed on all fours
 in the far circle.
 9 (16.96–18.08s) slow push over John's shoulder: the shadow starts to convulse.
@@ -113,8 +142,9 @@ chrysalis, shell pieces fly off, its spine arches and segments, limbs stretch wi
 arms lengthen, muscles swell — it grows into the monster of image 3, much taller than John.
 11 (21.56–26.00s) low behind John, tilting up: the monster rises to full height, spreads its
 long arms, roars without a voice, stalks toward him and crouches to charge.
-12 (26.00–30.00s) wide side view, slow pull-back: they charge at each other across the stone,
-and at 27.3s they strike at the SAME INSTANT — flame sword against claws — and a blinding
+12 (26.00–30.00s) wide side view, slow pull-back: they charge at each other across the stone —
+John covers the last meters in the blinding dash of COMBO 2, the frame streaking with motion
+lines — and at 27.3s they strike at the SAME INSTANT — flame sword against claws — and a blinding
 cyan-magenta-white flash erupts from the impact and swallows the whole frame, burning to white
 and then fading to black. END.
 
