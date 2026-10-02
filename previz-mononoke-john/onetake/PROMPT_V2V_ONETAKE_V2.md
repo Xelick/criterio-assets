@@ -100,13 +100,14 @@ strikes too fast to follow, a split second of darkness, then one final rising sl
 the enemy high into the air.
 
 CAMERA — strictly follow video 1, 1:1 and frame-aligned for all 30 seconds. ONE
-CONTINUOUS TAKE, NO CUTS, John always in frame. Keep every move: 0–4.3s a hard push-in from a
-frontal wide to an extreme close-up of his hand on the hilt while rolling to -34°; 4.3s a whip
-with the draw, then a low angle tilting up as the cards rise; 7.3–15.3s one long orbit around
-him that keeps rolling until the frame is almost upside down; 15.3–16.2s a full barrel roll
-through the combination; 16.2–17s a still hold; 17–18s a slow push; 18–21.6s a low push behind
-him toward the torii; 21.6–26s a low chase tilting up; 26–30s a slow pull-back as he walks
-away. Any deviation = failure.
+CONTINUOUS TAKE, NO CUTS, John always in frame. Keep every move: 0–4.3s a hard push-in from a frontal wide to an
+extreme close-up of his hand on the hilt with a slight Dutch tilt; 4.3s a whip with the draw,
+then a low angle tilting up as the cards rise; 7.3–15.3s one long, level orbit around him while
+he fights, in readable medium-wide framing; 15.3–16.2s a burst of sharp punch-in zooms on the
+combination; 16.2–17s a still hold; 17–18s a slow push; 18–21.6s a slow push behind him toward
+the torii; 21.6–26s a chase behind him, tilting up to the monster; 26–30s a slow pull-back as he
+walks away. The horizon stays level — only slight Dutch angles, never a roll, never an
+upside-down frame. Any deviation = failure.
 
 RULES
 1. SIX monsters and ONLY six. None exists before 4.8s. 4.8–6.6s six void silhouettes of John

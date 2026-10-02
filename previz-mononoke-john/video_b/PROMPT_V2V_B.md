@@ -98,7 +98,8 @@ the enemy high into the air.
 
 CAMERA — strictly follow video 1, 1:1 and frame-aligned, including its 11 CUTS at 4.28,
 7.28, 15.28, 15.44, 15.60, 16.00, 16.24, 16.96, 18.08, 21.56 and 26.00s — cut exactly there and
-nowhere else; keep every push, zoom, roll and tilt. No added transitions or shots.
+nowhere else; keep every push, zoom, pan and tilt. The horizon stays level — only slight Dutch
+angles, never a roll, never an upside-down frame. No added transitions or shots.
 
 RULES
 1. Only John and ONE enemy (the shadow that becomes the monster). Nobody else, ever.
@@ -120,13 +121,13 @@ RULES
 
 SHOTS
 1 (0–4.28s) John runs straight at camera across the courtyard, coat flying, past the
-shrine hall and stone lanterns; the camera pushes in hard and rolls.
+shrine hall and stone lanterns; the camera pushes in hard
+with a slight Dutch tilt.
 2 (4.28–7.28s) close on John as he skids to a stop in the near ritual circle; his hand closes
 on the hilt and he draws (5.75s) — the katana becomes the much larger flame sword (5.9s),
 sparks, orange aura at his feet; the camera tilts down to the blazing blade as he takes guard.
 3 (7.28–15.28s) the shadow in the far circle, prowling, in one long rolling move; at 13.5s it
-crouches, at 14.3s it LAUNCHES itself at John, claws raised — the camera whips with it, rolling
-over, so we see exactly where the attack comes from, John's sword entering the frame.
+crouches, at 14.3s it LAUNCHES itself at John, claws raised — the camera whip-pans with it so we see exactly where the attack comes from, John's sword entering the frame.
 4 (15.28–15.44s) side wide: the shadow in mid-air arriving at John, who raises the sword.
 5 (15.44–15.60s) extreme close: claws slam the blade, sparks.
 6 (15.60–16.00s) over John's shoulder, punch-in: he shoves the claws off his blade and whips

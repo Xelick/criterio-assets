@@ -346,28 +346,17 @@ chispas("choque_final", (0, 1.25, 1.7), 27.3)
 respaldo("03_accion")
 
 # ---------------------------------------------------------------- cámara: los 12 planos de la referencia
+# Los cortes caen donde corta la referencia (ref_curvas.json, de 30 a 25 fps). La cámara de cada
+# plano se arma a mano con el lenguaje de la referencia: derecha (solo inclinación holandesa de
+# pocos grados), personajes legibles, empujes, paneos y acercamientos bruscos donde los hay.
+# La medición automática de giro de la referencia se descartó: confundía el movimiento de los
+# personajes con el de la cámara.
 REF = json.load(open(os.path.join(AQUI, "ref_curvas.json")))["planos"]
 SH = []
 for i, (n, a30, b30, pts) in enumerate(REF):
     a = round(a30 * FPS / 30)
     b = round(REF[i + 1][1] * FPS / 30) - 1 if i + 1 < len(REF) else 749
     SH.append((n, a, b, pts))
-
-# cámara base de cada plano: (posición, objetivo, lente mm)
-BASE = {
-    1: ((0.5, 1.0, 0.9), (2.6, -8.0, 1.2), 22),       # John llega corriendo hacia cámara
-    2: ((1.4, -0.4, 1.7), (0, -2.5, 1.6), 35),     # primer plano: desenvaina, la cámara baja a la espada
-    3: ((-7.0, 3.5, 0.9), (0, 5.8, 1.0), 30),       # la sombra; órbita con giro; al final sigue su ataque
-    4: ((5.5, -0.9, 1.2), (0, -1.0, 1.3), 24),      # general lateral: llega el ataque
-    5: ((0.9, -1.0, 1.8), (0.05, -1.2, 1.7), 45),   # garra contra la hoja
-    6: ((-0.8, -3.8, 1.5), (0, -1.6, 1.4), 30),     # sobre el hombro: John empuja
-    7: ((1.8, -0.5, 0.4), (0, 3.4, 0.9), 26),       # la sombra sale despedida
-    8: ((0.9, -5.6, 0.9), (0, 3.0, 1.2), 30),       # quieta: John de espaldas, la sombra caída al fondo
-    9: ((0.65, -3.4, 1.65), (0, 5.2, 1.0), 45),     # empuje lento: empieza a retorcerse
-    10: ((-2.0, 9.8, 0.8), (0, 3.4, 1.5), 26),      # transformación; John siempre al fondo
-    11: ((0.8, -4.6, 0.4), (0, 5.0, 1.2), 24),     # el monstruo se alza; panea hacia arriba
-    12: ((9.5, 1.2, 1.3), (0, 1.2, 1.6), 24),       # cargan, golpe a la vez, destello
-}
 
 cam = bpy.data.objects.new("cam", bpy.data.cameras.new("cam"))
 sc.collection.objects.link(cam)
@@ -376,91 +365,74 @@ cam.data.sensor_fit, cam.data.sensor_width = "HORIZONTAL", SENSOR
 cam.data.clip_end = 600
 cam.rotation_mode = "QUATERNION"
 
-
-def interp(pts, t):
-    xs = [0, 0.25, 0.5, 0.75, 1.0]
-    i = min(int(t / 0.25), 3)
-    u = (t - xs[i]) / 0.25
-    p0, p1, p2, p3 = pts[max(i - 1, 0)], pts[i], pts[i + 1], pts[min(i + 2, 4)]
-    m1, m2 = (p2 - p0) / 2, (p3 - p1) / 2
-    h00, h10, h01, h11 = 2 * u**3 - 3 * u**2 + 1, u**3 - 2 * u**2 + u, -2 * u**3 + 3 * u**2, u**3 - u**2
-    return h00 * p1 + h10 * m1 + h01 * p2 + h11 * m2
-
-
-# posiciones de los personajes cuadro a cuadro (para apuntar cada plano)
 jt, st = bpy.data.objects["John_torso"], bpy.data.objects["Sombra_torso"]
 POS = {}
 for f in range(0, 750):
     sc.frame_set(f)
     POS[f] = (jt.matrix_world.translation.copy(), st.matrix_world.translation.copy())
 
-# quién tiene que verse en cada plano: (obligatorio, deseable)
-QUIEN = {1: ("J", ""), 2: ("J", ""), 3: ("S", "J"), 4: ("JS", ""), 5: ("", ""), 6: ("J", "S"), 7: ("S", ""),
-         8: ("JS", ""), 9: ("S", "J"), 10: ("JS", ""), 11: ("S", "J"), 12: ("JS", "")}
+# claves por plano: (fracción del plano, posición de cámara, objetivo, lente mm, giro °)
+# el objetivo puede ser un punto fijo o ("J"|"S"|"JS", dx, dy, dz): John, la sombra o el punto
+# medio entre los dos, más un desplazamiento
+TOMAS = {
+    1: [(0.0, (0.6, 1.0, 1.0), ("J", 0, 0, 0.3), 22, 0), (1.0, (0.6, 1.6, 1.0), ("J", 0, 0, 0.3), 34, -8)],
+    2: [(0.0, (1.3, -0.9, 1.7), ("J", 0, 0, 0.4), 38, -3), (0.5, (1.25, -0.95, 1.6), ("J", -0.2, 0.2, -0.05), 40, -1),
+        (1.0, (1.2, -1.0, 1.5), ("J", 0.3, 0.8, 0.05), 42, 0)],
+    3: [(0.0, (-5.0, 2.0, 1.3), ("S", 0, 0, 0), 32, 0), (0.5, (-4.6, 3.4, 1.3), ("S", 0, 0, 0), 34, -3),
+        (0.77, (-4.2, 3.0, 1.2), ("S", 0, 0, 0), 36, -2), (1.0, (-4.0, 1.8, 1.3), ("S", 0, 0, 0), 30, 4)],
+    4: [(0.0, (5.5, -1.0, 1.3), ("JS", 0, 0, 0.2), 26, 0), (1.0, (5.4, -1.0, 1.3), ("JS", 0, 0, 0.2), 30, -2)],
+    5: [(0.0, (0.9, -0.9, 1.8), (0.05, -1.15, 1.75), 45, 0), (1.0, (0.9, -0.9, 1.8), (0.05, -1.15, 1.75), 52, 1)],
+    6: [(0.0, (-0.8, -4.0, 1.6), ("J", 0, 1.2, 0.2), 30, 0), (1.0, (-0.8, -4.0, 1.6), ("J", 0, 1.2, 0.2), 48, -4)],
+    7: [(0.0, (1.8, -0.6, 0.6), ("S", 0, 0, 0), 26, 0), (1.0, (1.8, -0.6, 0.6), ("S", 0, 0, 0), 28, 2)],
+    8: [(0.0, (0.9, -5.4, 1.5), (0, 3.0, 1.1), 30, 0), (1.0, (0.9, -5.4, 1.5), (0, 3.0, 1.1), 30, 0)],
+    9: [(0.0, (0.8, -4.4, 1.6), ("S", 0, 0, 0), 40, 0), (1.0, (0.7, -3.9, 1.6), ("S", 0, 0, 0), 46, -5)],
+    10: [(0.0, (-1.8, 9.6, 1.0), (0, 2.0, 1.4), 26, 0), (1.0, (-1.6, 9.1, 1.0), (0, 2.0, 1.9), 30, 0)],
+    11: [(0.0, (0.9, -4.8, 0.8), (0, 4.0, 1.6), 26, 0), (1.0, (0.7, -4.2, 0.7), (0, 3.6, 2.6), 32, 0)],
+    12: [(0.0, (9.0, 0.8, 1.4), ("JS", 0, 0, 0.1), 26, 0), (0.33, (9.7, 0.8, 1.5), (0, 1.25, 1.5), 25, 0),
+         (1.0, (11.0, 0.8, 1.6), (0, 1.25, 1.5), 24, 0)],
+}
 
 
-def curva(n, pts, a, b, f, f0, hfov, vfov):
-    t = 0 if b == a else (f - a) / (b - a)
-    dx, dy, z, r = (interp([p[k] for p in pts], t) for k in range(4))
-    if n == 1:
-        z = max(z, 0.2) ** 0.5   # parte del zoom ya lo da John acercándose a la carrera
-    zl = max(z, 0.2)             # el paneo y la inclinación se midieron sobre el cuadro ya con zoom
-    rot = Matrix.Rotation(dx * hfov / zl, 4, "Y") @ Matrix.Rotation(dy * vfov / zl, 4, "X") \
-        @ Matrix.Rotation(math.radians(r), 4, "Z")
-    return rot, f0 * zl
+def objetivo(o, f):
+    if isinstance(o[0], str):
+        j, sm = POS[f]
+        base = j if o[0] == "J" else (sm if o[0] == "S" else (j + sm) / 2)
+        return base + Vector(o[1:])
+    return Vector(o)
 
 
-def puntaje(n, a, b, pts, L, base, f0, hfov, vfov):
-    req, opt = QUIEN[n]
-    tot = 0.0
+def mirar(loc, tgt, roll):
+    q = (tgt - loc).to_track_quat("-Z", "Y")
+    return q @ Matrix.Rotation(math.radians(roll), 4, "Z").to_quaternion()
+
+
+def suave(u):
+    return u * u * (3 - 2 * u)
+
+
+for n, a, b, _ in SH:
+    ks = TOMAS[n]
     for f in range(a, b + 1):
-        if f >= T(27.4):
-            continue
-        rot, lens = curva(n, pts, a, b, f, f0, hfov, vfov)
-        R = (base @ rot).to_3x3().transposed()
-        for q, p in (("J", POS[f][0]), ("S", POS[f][1])):
-            w = 10 if q in req else (1 if q in opt else 0)
-            if not w:
-                continue
-            v = R @ (p - L)
-            if v.z > -0.3:
-                tot += w
-                continue
-            x = v.x / -v.z * lens / (SENSOR / 2)
-            y = v.y / -v.z * lens / (SENSOR * H / W / 2)
-            if abs(x) > 0.9 or abs(y) > 0.9:
-                tot += w
-            tot += 0.03 * w * (abs(x) + abs(y))
-    return tot
-
-
-for n, a, b, pts in SH:
-    L, Tg, f0 = BASE[n]
-    L, Tg = Vector(L), Vector(Tg)
-    base0 = (Tg - L).to_track_quat("-Z", "Y").to_matrix().to_4x4()
-    hfov = 2 * math.atan(SENSOR / 2 / f0)
-    vfov = 2 * math.atan(SENSOR * H / W / 2 / f0)
-    mejor = (puntaje(n, a, b, pts, L, base0, f0, hfov, vfov), 0, 0)
-    if QUIEN[n] != ("", ""):
-        for dyaw in range(-36, 37, 4):
-            for dpit in range(-30, 31, 3):
-                bb = base0 @ Matrix.Rotation(math.radians(dyaw), 4, "Y") @ Matrix.Rotation(math.radians(dpit), 4, "X")
-                sco = puntaje(n, a, b, pts, L, bb, f0, hfov, vfov) + 0.02 * (abs(dyaw) + abs(dpit))
-                if sco < mejor[0]:
-                    mejor = (sco, dyaw, dpit)
-    base = base0 @ Matrix.Rotation(math.radians(mejor[1]), 4, "Y") @ Matrix.Rotation(math.radians(mejor[2]), 4, "X")
-    print(f"APUNTE plano {n:2d}: giro {mejor[1]:+d}°, inclinación {mejor[2]:+d}°")
-    for f in range(a, b + 1):
-        rot, lens = curva(n, pts, a, b, f, f0, hfov, vfov)
-        cam.location = L
-        cam.rotation_quaternion = (base @ rot).to_quaternion()
-        cam.data.lens = lens
+        u = 0 if b == a else (f - a) / (b - a)
+        i = max(k for k in range(len(ks)) if ks[k][0] <= u + 1e-9)
+        k0 = ks[i]
+        k1 = ks[min(i + 1, len(ks) - 1)]
+        w = 0 if k1[0] == k0[0] else suave((u - k0[0]) / (k1[0] - k0[0]))
+        loc = Vector(k0[1]).lerp(Vector(k1[1]), w)
+        tgt = objetivo(k0[2], f).lerp(objetivo(k1[2], f), w)
+        cam.location = loc
+        cam.rotation_quaternion = mirar(loc, tgt, k0[4] + (k1[4] - k0[4]) * w)
+        cam.data.lens = k0[3] + (k1[3] - k0[3]) * w
         cam.keyframe_insert("location", frame=f)
         cam.keyframe_insert("rotation_quaternion", frame=f)
         cam.data.keyframe_insert("lens", frame=f)
 for fc in cam.animation_data.action.fcurves:
     for k in fc.keyframe_points:
         k.interpolation = "CONSTANT"
+
+# quién tiene que verse en cada plano: (obligatorio, deseable)
+QUIEN = {1: ("J", ""), 2: ("J", ""), 3: ("S", "J"), 4: ("JS", ""), 5: ("", ""), 6: ("J", "S"), 7: ("S", ""),
+         8: ("JS", ""), 9: ("S", "J"), 10: ("JS", ""), 11: ("S", "J"), 12: ("JS", "")}
 respaldo("04_camara")
 
 # ---------------------------------------------------------------- control de encuadre por plano

@@ -567,41 +567,45 @@ Z, X = (0, 0, 1), (1, 0, 0)
 # (t, posición relativa a John, objetivo relativo, lente, vector arriba, giro°, pausa)
 # las posiciones son relativas a la trayectoria suavizada de John: lo sigue sin perderlo
 CAM = [
-    # ref. plano 1 (0-4.3 s): empuje fuerte con zoom y giro de -34°
+    # Lenguaje de la cinemática de referencia, sin el giro falso que dio la medición automática:
+    # la cámara se mantiene derecha (inclinación holandesa de pocos grados) y a distancia legible.
+    # ref. plano 1 (0-4.3 s): John camina hacia cámara; empuje fuerte hasta la mano en la empuñadura
     (0.0, (0.6, 5.0, 1.4), (0, 0, 1.3), 24, Z, 0, 0),
-    (2.0, (0.8, 3.0, 1.35), (-0.1, 0, 1.2), 32, Z, -10, 0),
-    (3.4, (0.9, 1.4, 1.5), (-0.25, 0.15, 1.1), 50, Z, -24, 0),
-    (4.25, (0.75, 1.0, 1.45), (-0.3, 0.15, 1.05), 80, Z, -34, 0),   # la mano en la empuñadura
-    # ref. plano 2 (4.3-7.3 s): latigazo con el desenvaine y paneo hacia arriba, ángulo bajo
-    (4.6, (1.4, 1.5, 1.3), (0.2, 0.6, 1.35), 36, Z, 0, 0),
-    (5.5, (1.6, 0.6, 1.0), (-0.1, 0.5, 1.4), 30, Z, 0, 0),
-    (7.3, (1.6, -0.6, 0.7), (-0.2, 0.6, 1.6), 26, Z, 0, 0),
-    # ref. plano 3 (7.3-15.3 s): un solo movimiento largo que orbita y gira hasta -150°
-    (7.6, (1.8, -1.5, 1.6), (0, 1.5, 1.1), 26, Z, -5, 0),
-    (9.3, (-0.5, -2.6, 1.3), (0, 0.6, 1.1), 28, Z, -40, 0),
-    (11.3, (-2.4, -1.4, 1.0), (0, 0.4, 1.0), 30, Z, -48, 0),
-    (12.3, (-3.0, 0.3, 0.9), (0, 0.3, 1.0), 28, Z, -52, 0),       # la barrida
-    (13.3, (-2.8, 0.9, 1.1), (0, 0.3, 1.1), 30, Z, -56, 0),
-    (14.3, (-2.4, 1.2, 1.2), (0, 0.3, 1.1), 32, Z, -80, 0),
-    (15.27, (-2.0, 1.4, 1.2), (0, 0.3, 1.1), 34, Z, -150, 0),
-    # ref. planos 4-7 (15.3-16.2 s): ráfaga de golpes; aquí la cámara completa la vuelta
-    (15.6, (-1.9, 1.5, 1.2), (0, 0.3, 1.1), 38, Z, -250, 0),
-    (16.0, (-2.1, 1.3, 1.25), (0, 0.3, 1.1), 36, Z, -340, 0),
-    # ref. plano 8 (16.2-17 s): quieta; plano 9 (17-18.1 s): empuje lento con giro leve
-    (16.23, (-2.3, 1.0, 1.3), (0, 0.5, 1.1), 32, Z, -360, 1),
-    (16.97, (-2.3, 1.0, 1.3), (0, 0.5, 1.1), 32, Z, -360, 1),
-    (18.07, (-1.8, 0.9, 1.2), (0, 0.6, 1.1), 36, Z, -367, 0),
-    # ref. plano 10 (18.1-21.6 s): empuje bajo por detrás; la patada y la caída del sexto
-    (18.5, (-2.0, -0.4, 0.9), (0.1, 0.8, 1.2), 30, Z, -364, 0),
-    (19.0, (-1.6, -1.6, 0.6), (0, 1.8, 1.3), 28, Z, -362, 0),
-    (21.57, (-1.0, -2.4, 0.5), (0, 3.5, 2.0), 30, Z, -364, 0),
-    # ref. plano 11 (21.6-26 s): sigue el duelo final empujando y paneando hacia arriba
-    (23.0, (-0.8, -2.3, 0.5), (0.1, 2.0, 1.6), 30, Z, -360, 0),
-    (24.5, (0.9, -2.0, 0.45), (0, 2.0, 1.5), 32, Z, -358, 0),
-    (26.0, (0.5, -1.6, 0.4), (0.1, 2.0, 2.4), 38, Z, -361, 0),
+    (2.0, (0.8, 3.0, 1.35), (-0.1, 0, 1.2), 30, Z, -4, 0),
+    (3.4, (0.9, 1.4, 1.5), (-0.25, 0.15, 1.1), 44, Z, -8, 0),
+    (4.25, (0.75, 1.0, 1.45), (-0.3, 0.15, 1.05), 60, Z, -10, 0),  # la mano en la empuñadura
+    # ref. plano 2 (4.3-7.3 s): latigazo con el desenvaine, luego ángulo bajo que sube con las cartas
+    (4.6, (1.4, 1.5, 1.3), (0.2, 0.6, 1.35), 36, Z, -4, 0),
+    (5.5, (1.8, 0.6, 1.1), (-0.1, 0.5, 1.4), 30, Z, 0, 0),
+    (7.3, (1.9, -0.8, 1.0), (-0.1, 0.8, 1.5), 28, Z, 0, 0),
+    # ref. plano 3 (7.3-15.3 s): un movimiento largo y derecho que rodea a John mientras pelea
+    (7.6, (1.9, -1.6, 1.5), (0, 1.4, 1.1), 28, Z, -2, 0),
+    (9.3, (0.2, -3.2, 1.6), (0, 0.8, 1.1), 28, Z, -4, 0),
+    (11.3, (-2.6, -2.0, 1.4), (0, 0.4, 1.0), 28, Z, -5, 0),
+    (12.3, (-3.4, 0.0, 1.1), (0, 0.4, 0.9), 26, Z, -3, 0),       # la barrida, a ras
+    (13.3, (-3.4, 0.8, 1.3), (0, 0.4, 1.1), 28, Z, 0, 0),
+    (14.3, (-3.2, 0.2, 1.4), (0, 0.6, 1.15), 30, Z, 3, 0),
+    (15.27, (-3.3, 0.3, 1.4), (0, 0.6, 1.15), 32, Z, 4, 0),
+    # ref. planos 4-7 (15.3-16.2 s): ráfaga de acercamientos bruscos en la combinación
+    (15.6, (-2.8, 0.3, 1.35), (0, 0.6, 1.15), 46, Z, 2, 0),
+    (15.85, (-3.1, 0.3, 1.35), (0, 0.6, 1.15), 38, Z, -3, 0),
+    (16.0, (-2.9, 0.3, 1.35), (0, 0.6, 1.15), 44, Z, 0, 0),
+    # ref. plano 8 (16.2-17 s): quieta; plano 9 (17-18.1 s): empuje lento con leve inclinación
+    (16.23, (-3.2, 0.4, 1.45), (0, 0.7, 1.1), 32, Z, 0, 1),
+    (16.97, (-3.2, 0.4, 1.45), (0, 0.7, 1.1), 32, Z, 0, 1),
+    (18.07, (-2.8, 0.5, 1.45), (0, 0.8, 1.15), 36, Z, -4, 0),
+    (18.6, (-2.4, -1.0, 1.5), (0, 1.6, 1.2), 32, Z, -3, 0),
+    # ref. plano 10 (18.1-21.6 s): empuje lento por detrás de John hacia el torii; la patada y
+    # la caída del sexto se ven al fondo
+    (19.0, (-1.5, -2.4, 1.6), (0, 2.6, 1.3), 30, Z, -2, 0),
+    (21.57, (-1.1, -2.7, 1.6), (0, 3.2, 1.4), 33, Z, 0, 0),
+    # ref. plano 11 (21.6-26 s): sigue el duelo empujando y subiendo la mirada al monstruo
+    (23.0, (-1.2, -3.4, 1.5), (0, 2.4, 1.5), 30, Z, 0, 0),
+    (24.5, (1.2, -3.3, 1.4), (0, 2.4, 1.6), 31, Z, 2, 0),
+    (26.0, (0.8, -3.2, 1.4), (0.1, 2.4, 1.8), 32, Z, 0, 0),
     # ref. plano 12 (26-30 s): se aleja despacio mientras John cruza el torii
-    (26.6, (0.3, -2.2, 1.0), (0, 2.5, 1.6), 34, Z, -360, 0),
-    (30.0, (0.2, -5.5, 1.4), (0, 3, 1.5), 30, Z, -360, 1),
+    (26.6, (0.4, -2.8, 1.5), (0, 2.5, 1.5), 32, Z, 0, 0),
+    (30.0, (0.2, -5.2, 1.8), (0, 3, 1.4), 28, Z, 0, 1),
 ]
 # golpes: pequeño zoom de acento y sacudida
 IMPACTOS = [(8.7, 0.5), (10.2, 0.4), (12.0, 1.0), (12.2, 0.6), (12.85, 0.7), (13.0, 0.8), (14.0, 0.9),
