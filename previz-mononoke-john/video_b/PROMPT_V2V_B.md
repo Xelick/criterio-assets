@@ -1,0 +1,116 @@
+# Video B v2: John contra el monstruo, 12 planos (30 s)
+
+Modelo: **Seedance 2.5**, `omni_reference`, 30 s, 21:9. Primero un borrador a 480p.
+El video guía es `previz_b_21x9.mp4`. Tiene los 12 planos, los cortes y los movimientos de
+cámara de la referencia de YouTube (0:57–1:27), con tres arreglos:
+
+1. Al final del plano 3 se ve a la sombra lanzarse y la cámara la sigue, así se entiende de
+   dónde sale el ataque.
+2. En la transformación (plano 10), John queda siempre al fondo y en cuadro.
+3. El final ya no es estático: los dos cargan, se golpean a la vez y un destello termina el
+   video.
+
+Las imágenes van en este orden:
+
+| Imagen | Qué es | ID |
+|---|---|---|
+| 1 | John | `cb042bab` |
+| 2 | La sombra | `0f946678` |
+| 3 | El monstruo | job `4cccfdfd` |
+| 4 | La espada | job `f2d00d5d` |
+| 5 | Locación estilo Blade Runner 2049 | job `d8839ed2` |
+
+```text
+# JOHN VS THE SHADOW-MONSTER — NIGHT SHRINE, 12 SHOTS (30s, video-to-video)
+A 30-second sword duel at night in 12 shots. John — crimson coat, round gold sunglasses —
+runs into a stone shrine courtyard by the sea, plants himself in a ritual circle and draws his
+katana, which becomes a giant black flame sword. His shadow double waits in the far circle; it
+launches at him, they clash, it is thrown back and, writhing like an insect in metamorphosis,
+it bursts into a towering monster. They charge, strike at the same instant, and a blinding
+flash ends the film. Video-to-video pass driven by video 1. No blood. Photoreal feature film.
+Original, no IP.
+
+ACTIVE REFERENCES
+video 1 = the previz (30s, 750 frames at 25 fps, 21:9, 12 shots) — defines EVERY camera
+move, framing, lens, zoom, roll, tilt, cut point and timing, the layout and all blocking
+beat-for-beat. Legend: RED mannequin with gold ring-glasses = John; BLACK mannequin with a
+magenta ring at the feet and a cyan ring at the waist = the shadow, and later the monster as
+it grows taller with longer arms; thin stick with red handle = katana; long black blade with
+orange stripe and spikes = flame sword; black stick at John's left hip = scabbard; orange ring
+at his feet = his aura; orange/gold flying cubes = sparks; black/cyan/magenta/violet flying
+cubes = pieces of the shadow's shell breaking off; growing white sphere = the final flash;
+red/white rings on the ground = ritual circles; vermilion arch = torii; brown box with dark
+roof = shrine hall; grey posts = stone lanterns; blue cones = waves. No grey, flat colors or
+primitive shapes survive.
+image 1 = John — face, long wavy dark hair, thin mustache, sparse chin beard, ROUND
+GOLD-FRAME SUNGLASSES always on, dark red suit, white shirt, small royal blue bow tie, long
+crimson overcoat worn open. Identity 100% consistent.
+image 2 = the shadow (0–18s): a flat light-swallowing black void silhouette of John's shape
+with a thin iridescent rim and two round lenses glowing cyan and magenta.
+image 3 = the monster (from 21.6s): towering, hunched and twisted, very long jointed arms
+with hooked claws, swollen muscles under cracked black obsidian-and-chitin skin, ridged spine,
+insect-like shoulder blades, torn coat membrane, black hair-tendrils, faceless elongated head
+with two round lenses burning white-hot cyan and magenta. The ONLY enemy, one creature.
+image 4 = the sword — red silk handle, gold four-lobed guard, golden beast-mouth pommel,
+black flame blade with hooked spikes and glowing red runes.
+image 5 = the location and the look — the shrine courtyard by the sea at night in dense
+haze. People in it not inherited.
+
+LOOK — Roger Deakins, Blade Runner 2049: 2.39:1, ultra-wide to wide lenses, low angles;
+hard light, high contrast, strong backlight from practical sources; huge volumetric beams in the
+fog, cyan-blue from one side and magenta-pink from the other. Mostly dark frames with crushed
+blacks, lit by flashes and glints: the shadow and the monster almost pure black shapes with
+thin iridescent rim glints; John's crimson coat and the sword's red runes the warmest accents.
+Palette — shadows #1E2B27 #172B3F #3B2C46 #4F3554 #284B5A #2E4C45; highlights #186E98 #3E9EB7
+#5BA2B8 #7BB8AF #6B4569 #A86A8C #C4879F. Real weight, motion blur on fast moves.
+
+CAMERA — strictly follow video 1, 1:1 and frame-aligned, including its 11 CUTS at 4.28,
+7.28, 15.28, 15.44, 15.60, 16.00, 16.24, 16.96, 18.08, 21.56 and 26.00s — cut exactly there and
+nowhere else; keep every push, zoom, roll and tilt. No added transitions or shots.
+
+RULES
+1. Only John and ONE enemy (the shadow that becomes the monster). Nobody else, ever.
+2. The sword: a katana in a black lacquered scabbard until 5.75s; as it leaves the scabbard
+   it becomes the flame sword, MUCH LARGER, more than twice the katana's length, with a burst
+   of crimson-gold sparks. Never two swords.
+3. Close quarters: claws against blade; no energy blasts, no projectiles. No blood.
+4. No text, no subtitles, no watermarks.
+
+SHOTS
+1 (0–4.28s) John runs straight at camera across the courtyard, coat flying, past the
+shrine hall and stone lanterns; the camera pushes in hard and rolls.
+2 (4.28–7.28s) close on John as he skids to a stop in the near ritual circle; his hand closes
+on the hilt and he draws (5.75s) — the katana becomes the much larger flame sword (5.9s),
+sparks, orange aura at his feet; the camera tilts down to the blazing blade as he takes guard.
+3 (7.28–15.28s) the shadow in the far circle, prowling, in one long rolling move; at 13.5s it
+crouches, at 14.3s it LAUNCHES itself at John, claws raised — the camera whips with it, rolling
+over, so we see exactly where the attack comes from, John's sword entering the frame.
+4 (15.28–15.44s) side wide: the shadow in mid-air arriving at John, who raises the sword.
+5 (15.44–15.60s) extreme close: claws slam the blade, sparks.
+6 (15.60–16.00s) over John's shoulder, punch-in: he shoves back with blade and free hand.
+7 (16.00–16.24s) low: the shadow thrown back through the air toward the torii.
+8 (16.24–16.96s) still: John's back in the foreground in guard, the shadow crashed on all fours
+in the far circle.
+9 (16.96–18.08s) slow push over John's shoulder: the shadow starts to convulse.
+10 (18.08–21.56s) THE METAMORPHOSIS, from behind the creature with John ALWAYS VISIBLE in the
+background, standing in guard in his circle: the shadow writhes, its outline cracks like a
+chrysalis, shell pieces fly off, its spine arches and segments, limbs stretch with new joints,
+arms lengthen, muscles swell — it grows into the monster of image 3, much taller than John.
+11 (21.56–26.00s) low behind John, tilting up: the monster rises to full height, spreads its
+long arms, roars without a voice, stalks toward him and crouches to charge.
+12 (26.00–30.00s) wide side view, slow pull-back: they charge at each other across the stone,
+and at 27.3s they strike at the SAME INSTANT — flame sword against claws — and a blinding
+cyan-magenta-white flash erupts from the impact and swallows the whole frame, burning to white
+and then fading to black. END.
+
+AUDIO
+Sea wind, footfalls on wet stone, coat snaps, steel ring and flame roar at the draw (5.9s),
+claws on steel (15.44s), impact (16.0s), cracking chitin and wet stretching during the
+metamorphosis (18–21.5s), a deep roar without a voice (23s), the final strike and a huge
+whooshing impact at 27.3s, then silence; no music, no dialogue.
+
+HOLD FOR THE FULL TIMELINE
+video 1 camera, cuts and timing 1:1; only John and one enemy; John always visible in the
+background of shot 10; the final simultaneous strike and the flash end the video; image 1
+identity with round gold sunglasses in every shot; Blade Runner 2049 look and palette.
+```
