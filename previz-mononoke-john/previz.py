@@ -158,9 +158,15 @@ CJ = {"piel_baja": "negro", "traje": "rojo", "abrigo": "abrigo", "piel": "piel",
 CD = {"piel_baja": "negro", "traje": "negro", "abrigo": (0.03, 0.01, 0.05), "piel": "negro", "pelo": "negro",
       "lente": "magenta", "cristal": "cian", "mono": "magenta"}
 john, j_hombro, j_mano = humano("John", (0, 0, 0), 0.0, CJ)
-dark, d_hombro, d_mano = humano("DarkJohn", (0, 6, 0), math.pi, CD)
-aura = mk("torus", "aura_dark", "magenta", (0, 0, 0.05), major_radius=0.8, minor_radius=0.04, parent=dark)
-aura2 = mk("torus", "aura_dark2", "cian", (0, 0, 0.9), major_radius=0.55, minor_radius=0.02, parent=dark)
+# cinco Dark-John: aparecen juntos en el giro y atacan de a uno
+DJ_POS = [(0, 5.5), (-2.2, 5.0), (2.2, 5.0), (2.6, 7.8), (-0.6, 8.2)]
+DJ_ESC = [1.0, 1.0, 1.0, 1.0, 1.3]  # el quinto es el más grande
+DJS = []
+for i, (x, y) in enumerate(DJ_POS):
+    r, h, _ = humano(f"DarkJohn{i + 1}", (x, y, 0), 0.0, CD)
+    mk("torus", "aura_dark", "magenta", (0, 0, 0.05), major_radius=0.8, minor_radius=0.04, parent=r)
+    mk("torus", "aura_dark2", "cian", (0, 0, 0.9), major_radius=0.55, minor_radius=0.02, parent=r)
+    DJS.append((r, h, DJ_ESC[i]))
 aura_j = mk("torus", "aura_john", "llama", (0, 0, 0.05), major_radius=0.8, minor_radius=0.04, parent=john)
 
 # funda en la cadera izquierda y empuñadura enfundada
@@ -288,16 +294,6 @@ key_rot(j_hombro, fr(3), a_empunadura)            # mano a la empuñadura
 key_rot(j_hombro, fr(12, 1), a_empunadura)
 key_rot(j_hombro, fr(13), apunta((-0.3, 0.6, -0.2)))
 key_rot(j_hombro, fr(13, 1), al_frente)            # desenvaina en el barrido
-key_rot(j_hombro, fr(17, 1), guardia)
-key_rot(j_hombro, fr(21, 1), guardia)
-key_rot(j_hombro, fr(22), al_frente)
-key_rot(j_hombro, fr(23), en_alto)                 # corte 1
-key_rot(j_hombro, fr(23, 1), apunta((0.4, 1, -0.5)))
-key_rot(j_hombro, fr(28), al_frente)
-key_rot(j_hombro, fr(29, 0.6), en_alto)            # corte final
-key_rot(j_hombro, fr(29, 0.85), apunta((-0.5, 1, -0.6)))
-key_rot(d_hombro, 0, apunta((0, 1, 0.2)))
-key_rot(d_hombro, fr(25, 1), apunta((0, 1, 0.6)))
 
 # la espada: enfundada hasta el plano 13, katana la primera mitad del barrido,
 # a mitad del plano 13 se transforma en la espada de llama (mucho más grande)
@@ -305,29 +301,188 @@ visible_tree(hilt_enf, [(0, fr(13) - 1)])
 visible_tree(katana, [(fr(13), fr(13, 0.45))])
 visible_tree(llama, [(fr(13, 0.45) + 1, 749)])
 visible(aura_j, [(fr(13, 0.45) + 1, 749)])
-# Dark-John aparece en el primer giro de cámara (plano 15) y crece hasta su tamaño
-visible_tree(dark, [(fr(15), 749)])
-dark.scale = (0.05, 0.05, 0.05)
-dark.keyframe_insert("scale", frame=fr(15))
-dark.scale = (1.08, 1.08, 1.08)
-dark.keyframe_insert("scale", frame=fr(15, 1))
-dark.location = (0, 6, 0)
-dark.keyframe_insert("location", frame=fr(24, 1))
-dark.location = (0, 3.6, 0)
-dark.keyframe_insert("location", frame=fr(25, 1))   # embiste hacia John
 # el dominio de cartas y la esfera llegan con Dark-John
 visible_tree(cartas, [(fr(14), 749)])
-visible(orbe, [(fr(14), 749)])
-visible(tent, [(fr(14), 749)])
 visible_tree(burst, [(fr(20), fr(20, 1))])
 visible_tree(mandala, [(fr(21), fr(21, 1))])
 visible(carta_sola, [(fr(8), fr(8, 1))])
 visible(bpy.data.objects["carta_sola_ojo"], [(fr(8), fr(8, 1))])
 
+
+# ---------------------------------------------------------------- pelea (16 s - 30 s)
+import random
+random.seed(7)
+
+
+def mira(x, y, tx=0.0, ty=0.0):
+    """Giro en Z para que el +Y local mire desde (x, y) hacia (tx, ty)."""
+    return math.atan2(-(tx - x), ty - y)
+
+
+def pose(o, f, x, y, z=0.0, yaw=None):
+    o.location = (x, y, z)
+    o.keyframe_insert("location", frame=f)
+    o.rotation_euler = (0, 0, mira(x, y) if yaw is None else yaw)
+    o.keyframe_insert("rotation_euler", frame=f)
+
+
+def acecha(dj, f0, f1, x, y, amp=0.15):
+    """Los que esperan no se quedan quietos: se balancean y amagan."""
+    for j, f in enumerate(range(f0, f1, 6)):
+        pose(dj[0], f, x + (amp if j % 2 else -amp), y, 0.06 if j % 2 else 0.0)
+
+
+def estalla(nombre, pos, k, cols=("negro", "cian", "magenta"), n=16, dur=10, tam=0.06):
+    """Escamas que salen volando: muerte de un Dark-John o chispas de un choque."""
+    e = empty(nombre, pos)
+    for j in range(n):
+        d = Vector((random.uniform(-1, 1), random.uniform(-1, 1), random.uniform(-0.6, 1))).normalized()
+        a = random.random() * 3
+        mk("cube", nombre + "_e", cols[j % len(cols)], tuple(d * random.uniform(0.15, 0.35)), (a, a, a),
+           (tam, tam, tam), parent=e)
+    visible_tree(e, [(k, k + dur)])
+    e.scale = (0.4, 0.4, 0.4)
+    e.keyframe_insert("scale", frame=k)
+    e.scale = (3.2, 3.2, 3.2)
+    e.keyframe_insert("scale", frame=k + dur)
+
+
+def muere(i, k, pos):
+    r, h, s = DJS[i]
+    r.scale = (s, s, s)
+    r.keyframe_insert("scale", frame=k - 1)
+    r.scale = (0.01, 0.01, 0.01)
+    r.keyframe_insert("scale", frame=k + 2)
+    estalla(f"muerte{i + 1}", pos, k)
+
+
+bloque = apunta((-0.2, 0.5, 0.8))
+garras_arriba, zarpazo = apunta((0.2, 1, 0.7)), apunta((0.5, 1, -0.2))
+K1, K2, K3, K4, K5 = 522, 590, 609, 664, 718   # 20.9 / 23.6 / 24.4 / 26.6 / 28.7 s
+
+# los cinco se forman en el giro (plano 15) uno tras otro y crecen hasta su tamaño
+for i, (r, h, s) in enumerate(DJS):
+    r.scale = (0.05, 0.05, 0.05)
+    r.keyframe_insert("scale", frame=400 + 2 * i)
+    r.scale = (s, s, s)
+    r.keyframe_insert("scale", frame=412 + 2 * i)
+    pose(r, 400, *DJ_POS[i])
+    key_rot(h, 400, apunta((0, 0.4, -1)))
+    key_rot(h, 430, garras_arriba)
+visible_tree(DJS[0][0], [(400, K1 + 2)])
+visible_tree(DJS[1][0], [(400, K2 + 2)])
+visible_tree(DJS[2][0], [(400, K3 + 2)])
+visible_tree(DJS[3][0], [(400, 640)])
+visible_tree(DJS[4][0], [(400, K5 + 2)])
+for i in range(5):
+    acecha(DJS[i], 416 + 2 * i, 490, *DJ_POS[i])
+
+# John: base en el centro del círculo
+pose(john, 0, 0, 0, yaw=0)
+pose(john, 459, 0, 0, yaw=0)
+
+# DJ1: corre hacia John, dos zarpazos (bloqueo y esquiva), cae con el contracorte
+d1, h1 = DJS[0][0], DJS[0][1]
+pose(d1, 490, 0, 5.5)
+pose(d1, 506, 0.1, 1.3)
+key_rot(h1, 506, garras_arriba)
+key_rot(h1, 510, zarpazo)
+key_rot(h1, 513, garras_arriba)
+key_rot(h1, 516, apunta((-0.4, 1, -0.1)))
+pose(d1, 518, 0.25, 0.9)
+estalla("choque1", (0.08, 0.75, 1.45), 510, ("llama", "oro"), n=10, dur=5, tam=0.03)
+muere(0, K1, (0.25, 0.9, 1.0))
+# DJ2 y DJ3 rodean por los flancos mientras pelea el primero
+d2, h2 = DJS[1][0], DJS[1][1]
+pose(d2, 490, -2.2, 5.0)
+pose(d2, 498, -2.6, 4.2)
+pose(d2, 506, -2.6, 3.0)
+acecha(DJS[1], 512, 545, -2.6, 3.0, 0.12)
+d3, h3 = DJS[2][0], DJS[2][1]
+pose(d3, 490, 2.2, 5.0)
+pose(d3, 498, 2.6, 4.2)
+pose(d3, 506, 2.6, 3.0)
+acecha(DJS[2], 512, 597, 2.6, 3.0, 0.12)
+acecha(DJS[3], 490, 615, *DJ_POS[3])
+acecha(DJS[4], 490, 672, *DJ_POS[4])
+# DJ2: carga (zoom de golpe), sus garras chocan contra la barrera, cae con el corte horizontal
+pose(d2, 545, -2.6, 3.0)
+key_rot(h2, 556, garras_arriba)
+pose(d2, 564, -0.75, 0.95)
+for j, f in enumerate(range(566, 586, 3)):
+    pose(d2, f, -0.72 + (0.04 if j % 2 else 0), 0.92)
+    key_rot(h2, f, zarpazo if j % 2 else garras_arriba)
+barrera = mk("cylinder", "barrera", "abrigo", (-0.4, 0.5, 1.35), (math.pi / 2, 0, math.radians(38)), radius=0.38, depth=0.02)
+mk("torus", "barrera_aro", "oro", (-0.4, 0.5, 1.35), (math.pi / 2, 0, math.radians(38)), major_radius=0.38, minor_radius=0.02)
+visible(barrera, [(564, 586)])
+visible(bpy.data.objects["barrera_aro"], [(564, 586)])
+muere(1, K2, (-0.7, 0.9, 1.0))
+# DJ3: salta desde la derecha y lo parte en el aire un corte ascendente
+pose(d3, 597, 2.6, 3.0, -0.15)
+key_rot(h3, 597, garras_arriba)
+pose(d3, 603, 1.6, 1.8, 1.2)
+pose(d3, 607, 0.8, 1.0, 0.9)
+key_rot(h3, 605, zarpazo)
+muere(2, K3, (0.75, 0.95, 1.6))
+# DJ4: se funde con la esfera; el tentáculo azota hacia John, él lo corta y la esfera implota
+d4 = DJS[3][0]
+pose(d4, 615, 2.6, 7.8)
+pose(d4, 635, 2.8, 9.0, 2.4)
+d4.scale = (1, 1, 1)
+d4.keyframe_insert("scale", frame=632)
+d4.scale = (0.3, 0.3, 0.3)
+d4.keyframe_insert("scale", frame=640)
+pt = tent.data.splines[0].bezier_points
+for b in pt:
+    b.handle_left_type = b.handle_right_type = "AUTO"
+pt[1].co = (-4.0, 4.0, 1.5)
+pt[1].keyframe_insert("co", frame=635)
+pt[1].co = (0.4, 0.9, 1.4)
+pt[1].keyframe_insert("co", frame=650)
+visible(tent, [(fr(14), 652)])
+orbe.scale = (1, 1, 1)
+orbe.keyframe_insert("scale", frame=652)
+orbe.scale = (1.35, 1.35, 1.35)
+orbe.keyframe_insert("scale", frame=658)
+orbe.scale = (0.02, 0.02, 0.02)
+orbe.keyframe_insert("scale", frame=K4)
+visible(orbe, [(fr(14), K4)])
+estalla("muerte4", (2.8, 9.0, 3.4), K4, n=24, dur=14, tam=0.12)
+# DJ5, el más grande: duelo final; bloqueo, agachada, giro de 360° y corte final
+d5, h5 = DJS[4][0], DJS[4][1]
+pose(d5, 672, -0.6, 8.2)
+pose(d5, 690, 0.0, 2.6)
+key_rot(h5, 688, garras_arriba)
+key_rot(h5, 693, zarpazo)
+key_rot(h5, 697, garras_arriba)
+key_rot(h5, 700, apunta((-1, 0.6, 0)))
+pose(d5, 712, 0.0, 1.9)
+estalla("choque5", (0.0, 1.3, 1.65), 693, ("llama", "oro"), n=10, dur=5, tam=0.03)
+muere(4, K5, (0.0, 1.9, 1.3))
+
+# John: se mueve con cada atacante (pasos, giros, agachada y giro completo)
+for f, x, y, z, yaw in [
+    (506, 0, 0, 0, 0), (510, 0, -0.1, 0, 0), (516, -0.2, 0, 0, 0.15), (521, 0.1, 0.3, 0, -0.1),
+    (535, 0, 0.1, 0, 0.7), (566, 0, 0.1, 0, 0.72), (588, -0.1, 0.2, 0, 0.75),
+    (597, 0, 0.15, 0, -0.7), (609, 0.15, 0.25, 0, -0.7), (640, 0.1, 0.3, 0, -0.3), (653, 0.1, 0.4, 0, -0.3),
+    (672, 0, 0.2, 0, 0), (693, 0, 0.1, 0, 0), (700, 0, 0.15, -0.3, 0), (704, 0, 0.2, 0, 0),
+    (714, 0, 0.35, 0, -2 * math.pi), (718, 0, 0.45, 0, -2 * math.pi), (749, 0, 0.45, 0, -2 * math.pi)]:
+    pose(john, f, x, y, z, yaw)
+for f, rot in [
+    (427, guardia), (459, guardia), (500, guardia), (510, bloque), (514, guardia), (518, en_alto),
+    (522, apunta((0.4, 1, -0.6))), (530, guardia), (566, guardia), (582, apunta((0.9, 0.1, 0.5))),
+    (590, apunta((-0.7, 1, -0.1))), (600, apunta((0.4, 0.3, -0.9))), (609, apunta((0.1, 0.7, 1.0))),
+    (640, guardia), (648, en_alto), (653, apunta((0.3, 1, -0.5))), (672, guardia), (693, bloque),
+    (697, guardia), (700, apunta((0.9, 0.4, 0.0))), (714, en_alto), (718, apunta((-0.5, 1, -0.7))),
+    (749, apunta((-0.5, 1, -0.7)))]:
+    key_rot(j_hombro, f, rot)
+
 # ---------------------------------------------------------------- render
 bpy.ops.wm.save_as_mainfile(filepath=os.path.join(OUT, "previz_mononoke_john.blend"))
 os.makedirs(os.path.join(OUT, "frames"), exist_ok=True)
 FR = [(s[1] + s[2]) // 2 for s in SH] if os.environ.get("MIDS") else range(F0, F1 + 1)
+if os.environ.get("FRAMES"):
+    FR = [int(x) for x in os.environ["FRAMES"].split(",")]
 for f in FR:
     sc.frame_set(f)
     sc.render.filepath = os.path.join(OUT, "frames", f"{f:04d}.png")
