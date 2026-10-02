@@ -141,7 +141,7 @@ background, standing in guard in his circle: the shadow writhes, its outline cra
 chrysalis, shell pieces fly off, its spine arches and segments, limbs stretch with new joints,
 arms lengthen, muscles swell — it grows into the monster of image 3, much taller than John.
 11 (21.56–26.00s) low behind John, tilting up: the monster rises to full height, spreads its
-long arms, roars without a voice, stalks toward him and crouches to charge.
+long arms, lets out a silent howl, stalks toward him and crouches to charge.
 12 (26.00–30.00s) wide side view, slow pull-back: they charge at each other across the stone —
 John covers the last meters in the blinding dash of COMBO 2, the frame streaking with motion
 lines — and at 27.3s they strike at the SAME INSTANT — flame sword against claws — and a blinding
@@ -150,8 +150,8 @@ and then fading to black. END.
 
 AUDIO
 Sea wind, footfalls on wet stone, coat snaps, steel ring and flame roar at the draw (5.9s),
-claws on steel (15.44s), impact (16.0s), cracking chitin and wet stretching during the
-metamorphosis (18–21.5s), a deep roar without a voice (23s), the final strike and a huge
+claws on steel (15.44s), impact (16.0s), cracking chitin during the metamorphosis
+(18–21.5s), a deep rumbling growl (23s), the final strike and a huge
 whooshing impact at 27.3s, then silence; no music, no dialogue.
 
 HOLD FOR THE FULL TIMELINE
