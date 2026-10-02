@@ -258,7 +258,7 @@ def camina(P, t0, t1, final, paso=0.27, amp=0.45, brazo=False):
     piernas(P, t1, final)
 
 
-def estalla(nombre, pos, t, cols=("negro", "cian", "magenta", "violeta", "oro"), n=18, dur=10, tam=0.06):
+def estalla(nombre, pos, t, cols=("negro", "cian", "magenta", "violeta", "oro"), n=18, dur=10, tam=0.035):
     """Escamas que salen volando: un Dark-John que se deshace, o chispas de un choque."""
     k = T(t)
     e = empty(nombre, pos)
@@ -280,8 +280,7 @@ def chispas(nombre, pos, t):
 
 def muere(i, t, pos, n=20):
     d = DJ[i]
-    s = d["s"]
-    d["r"].scale = (s, s, s)
+    d["r"].scale = d["S"]
     d["r"].keyframe_insert("scale", frame=T(t) - 1)
     d["r"].scale = (0.01, 0.01, 0.01)
     d["r"].keyframe_insert("scale", frame=T(t) + 2)
@@ -394,7 +393,7 @@ visible_tree(katana, [(T(4.45), T(4.6)), (T(27.6), T(28.0) - 1)])
 visible_tree(llama, [(T(4.6) + 1, T(27.6) - 1)])
 visible(aura_j, [(T(4.6) + 1, T(27.6) - 1)])
 chispas("chispas_desenvaine", (0.35, 0.9, 1.4), 4.6)
-estalla("chispas_desenvaine2", (0.3, 1.6, 1.5), 4.65, ("llama", "oro", "rojo"), n=24, dur=10, tam=0.05)
+estalla("chispas_desenvaine2", (0.3, 1.6, 1.5), 4.65, ("llama", "oro", "rojo"), n=24, dur=10, tam=0.025)
 
 # el pasillo de cartas sube del suelo al desenvainar; la esfera late
 for m, t0 in zip(muros, (4.6, 4.75)):
@@ -423,6 +422,15 @@ for i, d in enumerate(DJ):
     d["r"].keyframe_insert("scale", frame=T(tf))
     d["r"].scale = (d["s"],) * 3
     d["r"].keyframe_insert("scale", frame=T(tf + 0.5))
+    # metamorfosis: más alto, brazos más largos
+    d["S"] = (d["s"] * 1.08, d["s"] * 1.08, d["s"] * 1.4)
+    d["r"].scale = d["S"]
+    d["r"].keyframe_insert("scale", frame=T(7.4))
+    for h in (d["hL"], d["hR"]):
+        h.scale = (1, 1, 1)
+        h.keyframe_insert("scale", frame=T(tf + 0.5))
+        h.scale = (1.2, 1.2, 1.55)
+        h.keyframe_insert("scale", frame=T(7.4))
     pose(d["r"], tf, x, y, z, yaw=math.pi, tilt=-0.35 if i == 5 else 0)
     estalla(f"forma{i + 1}", (x, y, z + 1.0), tf, n=14, dur=12)
     key_rot(d["hL"], tf, garras(-1))
@@ -559,38 +567,41 @@ Z, X = (0, 0, 1), (1, 0, 0)
 # (t, posición relativa a John, objetivo relativo, lente, vector arriba, giro°, pausa)
 # las posiciones son relativas a la trayectoria suavizada de John: lo sigue sin perderlo
 CAM = [
-    (0.0, (0.5, 4.2, 1.35), (0, 0, 1.25), 32, Z, 0, 0),        # frontal: retrocede mientras él entra
-    (1.4, (0.9, 3.3, 1.3), (0, 0, 1.2), 36, Z, 0, 0),
-    (2.6, (1.2, 2.4, 1.35), (-0.1, 0, 1.3), 36, Z, 0, 0),
-    (3.4, (0.9, 1.25, 1.6), (-0.25, 0.15, 1.1), 38, Z, 0, 1),  # pausa: la mano en la empuñadura
-    (4.2, (0.85, 1.15, 1.55), (-0.28, 0.15, 1.08), 42, Z, 0, 0),
-    (4.6, (1.5, 1.5, 1.35), (0.2, 0.6, 1.35), 36, Z, 0, 0),    # latigazo con el desenvaine
-    (5.3, (2.6, -0.6, 1.6), (0, 1.0, 1.3), 30, Z, -6, 0),      # giro alrededor de él
-    (6.0, (0.9, -2.9, 2.0), (0, 1.8, 1.1), 28, Z, -4, 0),
-    (6.6, (-1.5, -2.5, 2.3), (0, 2.2, 1.0), 28, Z, 0, 0),
-    (7.6, (-1.0, -2.7, 2.7), (0, 2.0, 0.8), 30, Z, 0, 0),      # alta, detrás: empuje hacia adelante
-    (9.5, (-1.3, -2.3, 2.9), (0, 1.2, 0.7), 32, Z, 0, 0),
-    (11.0, (-2.8, -1.2, 2.3), (0, 1.2, 0.9), 30, Z, 0, 0),     # abre hacia el perfil
-    (12.0, (-4.0, 0.5, 1.1), (0, 1.0, 0.85), 24, Z, 0, 0),     # perfil bajo en la barrida
-    (13.0, (-4.1, 0.7, 1.2), (0, 0.8, 1.0), 24, Z, 0, 0),      # perfil lateral siguiendo la cadena
-    (14.0, (-4.0, 0.6, 1.2), (0, 0.8, 1.0), 26, Z, 0, 0),
-    (15.0, (-4.1, 0.4, 1.25), (0, 0.8, 1.0), 25, Z, 0, 0),
-    (16.0, (-3.5, 0.6, 1.2), (0, 0.8, 1.0), 28, Z, 0, 0),
-    (17.0, (-3.6, 0.5, 1.7), (0, 1.0, 0.9), 26, Z, 0, 0),
-    (18.0, (-2.2, 0.8, 4.2), (0, 1.2, 0.6), 28, (0.4, 0, 1), 0, 0),  # sube girando
-    (19.0, (-0.6, 2.6, 8.2), (0, 3.0, 0), 24, (1, 0, 0.3), 0, 0),
-    (19.4, (0, 3.0, 10.0), (0, 3.0, 0), 24, X, 0, 1),           # cenital: patada y caída del sexto
-    (20.6, (0, 3.4, 10.2), (0, 3.4, 0), 24, X, 0, 1),
-    (21.0, (0, 2.6, 8.8), (0, 3.4, 0), 24, X, 0, 0),
-    (21.45, (-0.6, -2.0, 4.4), (0, 1.4, 0.6), 25, (0.7, 0, 0.7), 0, 0),
-    (21.9, (-0.9, -3.0, 1.2), (0.2, 2.5, 1.2), 26, Z, 0, 0),        # se zambulle detrás de él, baja
-    (22.6, (-1.0, -3.0, 1.0), (0.2, 2.0, 1.25), 26, Z, 0, 0),
-    (23.5, (-0.6, -3.0, 0.95), (0.2, 2.0, 1.25), 28, Z, 0, 0),
-    (24.2, (1.2, -2.8, 0.9), (0, 2.0, 1.25), 28, Z, 0, 0),
-    (25.4, (0.9, -2.4, 1.0), (0.1, 2.0, 1.25), 26, Z, 0, 0),
-    (26.0, (0.3, -2.8, 1.0), (0.2, 2.2, 1.3), 24, Z, 0, 0),
-    (27.0, (0.4, -2.6, 1.5), (0, 2, 1.25), 30, Z, 0, 0),         # lo sigue de cerca hasta el torii
-    (30.0, (0.15, -2.2, 1.55), (0, 3, 1.35), 32, Z, 0, 1),
+    # ref. plano 1 (0-4.3 s): empuje fuerte con zoom y giro de -34°
+    (0.0, (0.6, 5.0, 1.4), (0, 0, 1.3), 24, Z, 0, 0),
+    (2.0, (0.8, 3.0, 1.35), (-0.1, 0, 1.2), 32, Z, -10, 0),
+    (3.4, (0.9, 1.4, 1.5), (-0.25, 0.15, 1.1), 50, Z, -24, 0),
+    (4.25, (0.75, 1.0, 1.45), (-0.3, 0.15, 1.05), 80, Z, -34, 0),   # la mano en la empuñadura
+    # ref. plano 2 (4.3-7.3 s): latigazo con el desenvaine y paneo hacia arriba, ángulo bajo
+    (4.6, (1.4, 1.5, 1.3), (0.2, 0.6, 1.35), 36, Z, 0, 0),
+    (5.5, (1.6, 0.6, 1.0), (-0.1, 0.5, 1.4), 30, Z, 0, 0),
+    (7.3, (1.6, -0.6, 0.7), (-0.2, 0.6, 1.6), 26, Z, 0, 0),
+    # ref. plano 3 (7.3-15.3 s): un solo movimiento largo que orbita y gira hasta -150°
+    (7.6, (1.8, -1.5, 1.6), (0, 1.5, 1.1), 26, Z, -5, 0),
+    (9.3, (-0.5, -2.6, 1.3), (0, 0.6, 1.1), 28, Z, -40, 0),
+    (11.3, (-2.4, -1.4, 1.0), (0, 0.4, 1.0), 30, Z, -48, 0),
+    (12.3, (-3.0, 0.3, 0.9), (0, 0.3, 1.0), 28, Z, -52, 0),       # la barrida
+    (13.3, (-2.8, 0.9, 1.1), (0, 0.3, 1.1), 30, Z, -56, 0),
+    (14.3, (-2.4, 1.2, 1.2), (0, 0.3, 1.1), 32, Z, -80, 0),
+    (15.27, (-2.0, 1.4, 1.2), (0, 0.3, 1.1), 34, Z, -150, 0),
+    # ref. planos 4-7 (15.3-16.2 s): ráfaga de golpes; aquí la cámara completa la vuelta
+    (15.6, (-1.9, 1.5, 1.2), (0, 0.3, 1.1), 38, Z, -250, 0),
+    (16.0, (-2.1, 1.3, 1.25), (0, 0.3, 1.1), 36, Z, -340, 0),
+    # ref. plano 8 (16.2-17 s): quieta; plano 9 (17-18.1 s): empuje lento con giro leve
+    (16.23, (-2.3, 1.0, 1.3), (0, 0.5, 1.1), 32, Z, -360, 1),
+    (16.97, (-2.3, 1.0, 1.3), (0, 0.5, 1.1), 32, Z, -360, 1),
+    (18.07, (-1.8, 0.9, 1.2), (0, 0.6, 1.1), 36, Z, -367, 0),
+    # ref. plano 10 (18.1-21.6 s): empuje bajo por detrás; la patada y la caída del sexto
+    (18.5, (-2.0, -0.4, 0.9), (0.1, 0.8, 1.2), 30, Z, -364, 0),
+    (19.0, (-1.6, -1.6, 0.6), (0, 1.8, 1.3), 28, Z, -362, 0),
+    (21.57, (-1.0, -2.4, 0.5), (0, 3.5, 2.0), 30, Z, -364, 0),
+    # ref. plano 11 (21.6-26 s): sigue el duelo final empujando y paneando hacia arriba
+    (23.0, (-0.8, -2.3, 0.5), (0.1, 2.0, 1.6), 30, Z, -360, 0),
+    (24.5, (0.9, -2.0, 0.45), (0, 2.0, 1.5), 32, Z, -358, 0),
+    (26.0, (0.5, -1.6, 0.4), (0.1, 2.0, 2.4), 38, Z, -361, 0),
+    # ref. plano 12 (26-30 s): se aleja despacio mientras John cruza el torii
+    (26.6, (0.3, -2.2, 1.0), (0, 2.5, 1.6), 34, Z, -360, 0),
+    (30.0, (0.2, -5.5, 1.4), (0, 3, 1.5), 30, Z, -360, 1),
 ]
 # golpes: pequeño zoom de acento y sacudida
 IMPACTOS = [(8.7, 0.5), (10.2, 0.4), (12.0, 1.0), (12.2, 0.6), (12.85, 0.7), (13.0, 0.8), (14.0, 0.9),
@@ -671,7 +682,7 @@ malos = []
 for f in range(0, 750):
     sc.frame_set(f)
     c = world_to_camera_view(sc, cam, torso.matrix_world.translation)
-    if not (0.05 < c.x < 0.95 and 0.05 < c.y < 0.95 and c.z > 0.3):
+    if not (0.05 < c.x < 0.95 and 0.05 < c.y < 0.95 and c.z > 0.3) and not T(3.3) <= f <= T(4.5):
         malos.append((f, round(c.x, 2), round(c.y, 2), round(c.z, 2)))
 print("FUERA_DE_CUADRO", len(malos))
 for m in malos[::6]:
