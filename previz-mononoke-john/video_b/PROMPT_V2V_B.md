@@ -31,9 +31,12 @@ flash ends the film. Video-to-video pass driven by video 1. No blood. Photoreal 
 Original, no IP.
 
 ACTIVE REFERENCES
-video 1 = the previz (30s, 750 frames at 25 fps, 21:9, 12 shots) — defines EVERY camera
-move, framing, lens, zoom, roll, tilt, cut point and timing, the layout and all blocking
-beat-for-beat. Legend: RED mannequin with gold ring-glasses = John; BLACK mannequin with a
+video 1 = the previz (30s, 750 frames at 25 fps, 21:9, 12 shots) — a rough 3D blockout.
+Take from it ONLY every camera move, framing, lens, zoom, roll, tilt, cut point and timing, the
+layout of the place, where each character stands in frame and WHEN each beat happens. Do NOT
+copy how the mannequins move: they are rigid placeholders that slide, snap between poses and
+swing stiff limbs. Reinvent every body movement as fluid, real stunt choreography (see
+MOVEMENT). Legend: RED mannequin with gold ring-glasses = John; BLACK mannequin with a
 magenta ring at the feet and a cyan ring at the waist = the shadow, and later the monster as
 it grows taller with longer arms; thin stick with red handle = katana; long black blade with
 orange stripe and spikes = flame sword; black stick at John's left hip = scabbard; orange ring
@@ -63,6 +66,18 @@ blacks, lit by flashes and glints: the shadow and the monster almost pure black 
 thin iridescent rim glints; John's crimson coat and the sword's red runes the warmest accents.
 Palette — shadows #1E2B27 #172B3F #3B2C46 #4F3554 #284B5A #2E4C45; highlights #186E98 #3E9EB7
 #5BA2B8 #7BB8AF #6B4569 #A86A8C #C4879F. Real weight, motion blur on fast moves.
+
+MOVEMENT — video 1 only marks where everyone is and WHEN each hit lands; the performance is
+yours to create. John fights like a trained swordsman: continuous flowing motion, footwork that
+carries his weight into every cut, hips and shoulders turning before the blade, wind-up, impact,
+follow-through and recovery chained straight into the next move, his coat swinging with every
+turn, the much larger flame sword handled with real mass and momentum. Exchanges are fast and
+connected, never pose-to-pose: a block flows into a counter, a slip flows into a cut, each step
+lands where the next attack begins. The shadow and the monster move like predators — skittering, lunging,
+recoiling, scrambling, bodies twisting and reacting to every hit; the metamorphosis is organic
+and continuous, never a jump between shapes. No stiff
+limbs, no sliding feet, no snapping between poses, no robotic or puppet-like motion, no frozen
+holds.
 
 CAMERA — strictly follow video 1, 1:1 and frame-aligned, including its 11 CUTS at 4.28,
 7.28, 15.28, 15.44, 15.60, 16.00, 16.24, 16.96, 18.08, 21.56 and 26.00s — cut exactly there and
@@ -110,7 +125,8 @@ metamorphosis (18–21.5s), a deep roar without a voice (23s), the final strike 
 whooshing impact at 27.3s, then silence; no music, no dialogue.
 
 HOLD FOR THE FULL TIMELINE
-video 1 camera, cuts and timing 1:1; only John and one enemy; John always visible in the
+video 1 camera, cuts and timing 1:1; bodies move with fluid, weighty, connected choreography,
+never like the stiff previz mannequins; only John and one enemy; John always visible in the
 background of shot 10; the final simultaneous strike and the flash end the video; image 1
 identity with round gold sunglasses in every shot; Blade Runner 2049 look and palette.
 ```

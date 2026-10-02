@@ -30,9 +30,12 @@ takes them apart up close and keeps pushing forward. Video-to-video pass driven 
 No blood. Photoreal feature film. Original, no IP.
 
 ACTIVE REFERENCES
-video 1 = the previz (30s, 750 frames at 25 fps, 21:9, ONE continuous take) — defines the
-ENTIRE camera path (trajectory, lens, rolls, tilts, pushes, timing), the layout and all
-blocking beat-for-beat. Legend: RED mannequin with gold ring-glasses = John; tall BLACK
+video 1 = the previz (30s, 750 frames at 25 fps, 21:9, ONE continuous take) — a rough 3D
+blockout. Take from it ONLY the camera path (trajectory, lens, rolls, tilts, pushes, timing), the
+layout of the place, where each character stands in frame and WHEN each beat happens. Do NOT
+copy how the mannequins move: they are rigid placeholders that slide, snap between poses and
+swing stiff limbs. Reinvent every body movement as fluid, real stunt choreography (see
+MOVEMENT). Legend: RED mannequin with gold ring-glasses = John; tall BLACK
 mannequins with a magenta ring at the feet and a cyan ring at the waist = the monsters (the
 one on the torii is Monster 6); thin stick with red handle = katana; long black blade with
 orange stripe and spikes = flame sword; black stick at John's left hip = scabbard; orange ring
@@ -67,6 +70,17 @@ glints and sparks in their skin cracks; John's crimson coat and the sword's red 
 accents. Palette — shadows #1E2B27 #172B3F #3B2C46 #4F3554 #284B5A #2E4C45; highlights #186E98
 #3E9EB7 #5BA2B8 #7BB8AF #6B4569 #A86A8C #C4879F. Grounded stunt choreography, real weight,
 practical cloth, sparks and sea mist, motion blur on fast moves.
+
+MOVEMENT — video 1 only marks where everyone is and WHEN each hit lands; the performance is
+yours to create. John fights like a trained swordsman: continuous flowing motion, footwork that
+carries his weight into every cut, hips and shoulders turning before the blade, wind-up, impact,
+follow-through and recovery chained straight into the next move, his coat swinging with every
+turn, the much larger flame sword handled with real mass and momentum. Exchanges are fast and
+connected, never pose-to-pose: a block flows into a counter, a slip flows into a cut, each step
+lands where the next attack begins. The monsters move like predators — skittering, lunging,
+recoiling, scrambling, bodies twisting and reacting to every hit before they shatter. No stiff
+limbs, no sliding feet, no snapping between poses, no robotic or puppet-like motion, no frozen
+holds.
 
 CAMERA — strictly follow video 1, 1:1 and frame-aligned for all 30 seconds. ONE
 CONTINUOUS TAKE, NO CUTS, John always in frame. Keep every move: 0–4.3s a hard push-in from a
@@ -134,7 +148,8 @@ dialogue. Accents: 3.6s click · 4.6s steel ring into a flame roar · 6.6–7.4s
 22.5–26s rapid trade · 26.0s biggest shatter · 28.0s sheath click · 28.5–30s wind only.
 
 HOLD FOR THE FULL TIMELINE
-video 1 camera path 1:1, one continuous take, no cuts, John always in frame. Six monsters
+video 1 camera path 1:1, one continuous take, no cuts, John always in frame. Bodies move with
+fluid, weighty, connected choreography, never like the stiff previz mannequins. Six monsters
 from image 2, each its own variant, always in front of him; one at a time, hand to hand; six
 destructions at 12.2 / 13.0 / 14.0 / 16.0 / 20.1 / 26.0s. Katana until 4.45s and from 27.6s, the
 much larger flame sword in between; John never hit; image 1 identity with round gold sunglasses
