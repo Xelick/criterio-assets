@@ -39,7 +39,7 @@ real choreography. No blood. Photoreal feature film. Original, no IP.
 
 ACTIVE REFERENCES
 video 1 = the previz (30s, 750 frames at 25 fps, 21:9, ONE continuous take) — a rough 3D
-blockout. Take from it ONLY the camera path (trajectory, lens, rolls, tilts, pushes, timing), the
+blockout. Take from it ONLY the camera path (trajectory, lens, pans, tilts, pushes, timing), the
 layout of the place, where each character stands in frame and WHEN each beat happens. Do NOT
 copy how the mannequins move: they are rigid placeholders that slide, snap between poses and
 swing stiff limbs. Reinvent every body movement as fluid, real stunt choreography (see
