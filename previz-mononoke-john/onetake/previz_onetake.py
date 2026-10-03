@@ -3,6 +3,7 @@
 Uso: python previz_onetake.py salida_dir [frame_ini frame_fin]
 Variables: RES=0.5 baja la resolución; FRAMES=a,b,c renderiza solo esos cuadros;
 NORENDER=1 solo arma la escena, guarda los .blend y revisa el encuadre.
+BLOQUES=1 cambia los maniquíes por figuras rígidas de caja y esfera y quita la utilería.
 
 La pelea sigue la lógica de "HERO VS SIX WHITE NINJA": John avanza por un pasillo de
 cartas talismán hacia el torii; los Dark-John le salen al paso de a uno y él los
@@ -553,6 +554,71 @@ chispas("choque6a", (0.15, 12.75, 1.7), 22.7)
 chispas("choque6b", (0.25, 13.95, 1.6), 24.7)
 muere(5, 26.0, (0.05, 15.4, 1.3), n=34)
 chispas("vuelve_katana", (0.4, 15.9, 1.0), 27.6)
+
+# ---------------------------------------------------------------- bloques (BLOQUES=1)
+# Como en los ejemplos de Higgsfield: el previz solo lleva posiciones, orientación y cámara.
+# Cada personaje es una figura rígida de caja y esfera (cara VERDE = frente, cara ROJA =
+# espalda) que solo se traslada y gira; sin espada, chispas, auras ni utilería, y el
+# escenario en grises. La coreografía la escribe el prompt.
+BLOQUES = bool(os.environ.get("BLOQUES"))
+if BLOQUES:
+    GRISES = {"suelo": 0.32, "mar": 0.13, "torii_pilar": 0.62, "torii_kasagi": 0.62, "torii_nuki": 0.62,
+              "torii_base": 0.4, "torii_kasagi_n": 0.4, "haiden": 0.45, "haiden_techo": 0.28,
+              "farol": 0.5, "farol_caja": 0.5, "carta": 0.72}
+    for o in list(bpy.data.objects):
+        if o.type != "MESH":
+            continue
+        base = o.name.split(".")[0]
+        if base in GRISES:
+            g = GRISES[base]
+            o.color = (g, g, g, 1)
+        else:
+            bpy.data.objects.remove(o, do_unlink=True)
+    sc.world.color = (0.16, 0.17, 0.19)
+    COL.update({"verde": (0.1, 0.85, 0.2), "rojo_codigo": (0.9, 0.08, 0.06),
+                "fig_john": (0.9, 0.9, 0.88), "fig_monstruo": (0.06, 0.06, 0.07)})
+
+    # los que miran a John cruzan ±π al girar: sin desenrollar, el bloque daría vueltas falsas
+    for d in DJ:
+        for fcv in d["r"].animation_data.action.fcurves:
+            if fcv.data_path != "rotation_euler" or fcv.array_index != 2:
+                continue
+            prev = None
+            for kp in sorted(fcv.keyframe_points, key=lambda k: k.co[0]):
+                v = kp.co[1]
+                while prev is not None and v - prev > math.pi:
+                    v -= TAU
+                while prev is not None and v - prev < -math.pi:
+                    v += TAU
+                dv = v - kp.co[1]
+                kp.co[1] += dv
+                kp.handle_left[1] += dv
+                kp.handle_right[1] += dv
+                prev = v
+            fcv.update()
+
+    def figura(nombre, raiz, col, alto=1.5, ancho=0.5, fondo=0.3, cabeza=0.13):
+        b = empty(nombre + "_bloque")
+        c = b.constraints.new("COPY_LOCATION")
+        c.target = raiz
+        lim = b.constraints.new("LIMIT_LOCATION")
+        lim.use_min_z, lim.min_z = True, 0.0
+        r = b.constraints.new("COPY_ROTATION")
+        r.target, r.use_x, r.use_y = raiz, False, False
+        s = b.constraints.new("COPY_SCALE")
+        s.target = raiz
+        partes = [mk("cube", nombre + "_caja", col, (0, 0, alto / 2), scale=(ancho / 2, fondo / 2, alto / 2), parent=b),
+                  mk("uv_sphere", nombre + "_esfera", col, (0, 0, alto + cabeza), radius=cabeza, parent=b)]
+        for lado, cc in ((1, "verde"), (-1, "rojo_codigo")):
+            # panel a la altura del pecho, para que en los primeros planos no llene el cuadro
+            partes.append(mk("cube", nombre + "_cara", cc, (0, lado * (fondo / 2 + 0.006), alto * 0.65),
+                             scale=(ancho / 2 * 0.55, 0.006, alto * 0.28), parent=b))
+        return partes
+
+    figura("John", J["r"], "fig_john")
+    for i, d in enumerate(DJ):
+        for p in figura(f"DarkJohn{i + 1}", d["r"], "fig_monstruo"):
+            visible(p, [(T(4.8 + 0.3 * i), T(KILL[i]) + 2)])
 respaldo("03_pelea")
 
 # ---------------------------------------------------------------- cámara: un solo plano
@@ -607,6 +673,11 @@ CAM = [
     (26.6, (0.4, -2.8, 1.5), (0, 2.5, 1.5), 32, Z, 0, 0),
     (30.0, (0.2, -5.2, 1.8), (0, 3, 1.4), 28, Z, 0, 1),
 ]
+if BLOQUES:
+    # con bloques no hay mano ni empuñadura que enseñar: el empuje termina en un plano cercano
+    # de la cadera en vez de pegarse a la caja
+    CAM[2] = (3.4, (1.3, 2.5, 1.5), (-0.2, 0.1, 1.15), 34, Z, -8, 0)
+    CAM[3] = (4.25, (1.2, 2.0, 1.4), (-0.3, 0.1, 1.05), 40, Z, -10, 0)
 # golpes: pequeño zoom de acento y sacudida
 IMPACTOS = [(8.7, 0.5), (10.2, 0.4), (12.0, 1.0), (12.2, 0.6), (12.85, 0.7), (13.0, 0.8), (14.0, 0.9),
             (15.4, 0.5), (15.6, 0.5), (15.8, 0.5), (16.0, 0.9), (19.6, 1.0), (20.12, 0.6), (21.0, 0.6),
@@ -681,11 +752,11 @@ for f in range(0, 750):
 respaldo("04_camara")
 
 # ---------------------------------------------------------------- control: John siempre en cuadro
-torso = bpy.data.objects["John_torso"]
+torso = bpy.data.objects["John_caja" if BLOQUES else "John_torso"]
 malos = []
 for f in range(0, 750):
     sc.frame_set(f)
-    c = world_to_camera_view(sc, cam, torso.matrix_world.translation)
+    c = world_to_camera_view(sc, cam, torso.matrix_world.translation + Vector((0, 0, 0.4 if BLOQUES else 0)))
     if not (0.05 < c.x < 0.95 and 0.05 < c.y < 0.95 and c.z > 0.3) and not T(3.3) <= f <= T(4.5):
         malos.append((f, round(c.x, 2), round(c.y, 2), round(c.z, 2)))
 print("FUERA_DE_CUADRO", len(malos))
