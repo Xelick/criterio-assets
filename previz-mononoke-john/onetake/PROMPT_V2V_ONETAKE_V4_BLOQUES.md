@@ -129,7 +129,7 @@ no body left, no blood.
 THE FINAL BOSS (Monster 6) is different: it is too strong to stagger, so it keeps its stance and
 only flinches, but every cut still hurts it — each one leaves a glowing scar of cyan-magenta light
 burned into its chitin that does NOT fade. The scars accumulate hit after hit, cracks spreading
-from them and leaking light, so by 25s its body is laced with glowing wounds and it is visibly
+from them and leaking light, so by 25s its body is laced with glowing scars and it is visibly
 weakening. John's last strike is CHARGED: during his sidestep and full spin the flame sword
 gathers power — the flame swells and burns brighter, crimson-gold light coiling up the blade —
 and the final diagonal cut releases it all; at that instant every scar on the boss ignites at once,
