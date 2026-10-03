@@ -2,8 +2,11 @@
 
 Todo lo que se generó o se subió a la cuenta de Higgsfield durante este proyecto (ID de usuario
 `user_3K4O0O0l56fNWa9WqWQdW4WRQIY`), con su enlace directo. Los enlaces son públicos y siguen
-funcionando aunque se cambie de cuenta. El zip con todo ordenado está en el enlace que se dejó en
-la conversación. `export_higgsfield.tsv` tiene la misma lista para descargarla con un script.
+funcionando aunque se cambie de cuenta. Todo junto y ordenado en un zip
+(458 MB, 96 archivos): [john_mononoke_export_higgsfield.zip](https://d2ol7oe51mr4n9.cloudfront.net/user_3K4O0O0l56fNWa9WqWQdW4WRQIY/c8f47020-e508-4851-ad76-27eeddfe53b9.zip).
+Faltan dos archivos que Higgsfield ya no sirve (error 403): `previz_videoB_v1b_dcde3d52.mp4`, una
+copia repetida del previz B v1 (`1440abc3`, que sí está), y `7ead2c39.png`, una imagen de prueba de
+subida. `export_higgsfield.tsv` tiene la misma lista para descargarla con un script.
 
 Para pasar a otra cuenta solo hacen falta seis archivos: el previz `2d7e064d`, la foto de John
 `cb042bab`, los monstruos `8e49fb99`, la espada `f2d00d5d`, la locación `d8839ed2` y las cartas
