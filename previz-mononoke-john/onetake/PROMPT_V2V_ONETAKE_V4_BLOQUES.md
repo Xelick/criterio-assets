@@ -148,8 +148,8 @@ no body left, no blood.
 SEVERED LIMBS: the flame sword cuts clean through the monsters' chitin, so big cuts take limbs off —
 a claw, a forearm, a whole long arm, a leg. The severed limb spins away through the air and
 disintegrates into black flakes and cyan-magenta light before it touches the ground; the cut end on
-the monster glows white-hot cyan-magenta, like molten glass, and leaks light — never blood, never
-flesh. The monster keeps fighting on what it has left, more frenzied.
+the monster glows white-hot cyan-magenta, like molten glass, and leaks light — never blood.
+The monster keeps fighting on what it has left, more frenzied.
 THE FINAL BOSS (Monster 6) is different: it is too strong to stagger, so it keeps its stance and
 only flinches, but every cut still hurts it — each one leaves a glowing scar of cyan-magenta light
 burned into its chitin that does NOT fade. The scars accumulate hit after hit, cracks spreading
