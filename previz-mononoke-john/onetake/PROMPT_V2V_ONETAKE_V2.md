@@ -32,8 +32,10 @@ floating talisman cards rise from the stone along the path to a vermilion torii 
 SIX shadow doubles of him form out of iridescent flakes and, writhing like insects in
 metamorphosis, burst into SIX MONSTERS: five wait on the path ahead, the sixth and biggest
 crouches on the torii lintel and drops down last. They attack ONE AT A TIME, hand to hand; he
-takes them apart up close and keeps pushing forward. Video-to-video pass driven by video 1.
-No blood. Photoreal feature film. Original, no IP.
+takes them apart up close and keeps pushing forward. Video-to-video pass driven by video 1:
+REPLICATE ITS CAMERA, NOT ITS MOVEMENTS — copy the camera path, the layout and the timing of
+every beat, but never the stiff motion of its mannequins; every body movement is new, fluid,
+real choreography. No blood. Photoreal feature film. Original, no IP.
 
 ACTIVE REFERENCES
 video 1 = the previz (30s, 750 frames at 25 fps, 21:9, ONE continuous take) — a rough 3D
