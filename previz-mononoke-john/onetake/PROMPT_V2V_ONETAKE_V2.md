@@ -1,7 +1,7 @@
 # Video A v2: one-take, John contra seis monstruos (30 s)
 
 Modelo: **Seedance 2.5**, `omni_reference`, 30 s, 21:9. Primero un borrador a 480p.
-El video guía es `previz_onetake_v2_21x9.mp4`. Su cámara copia, en orden y con el mismo
+El video guía es `previz_onetake_v3_21x9.mp4` (media `55e6c477`). Su cámara copia, en orden y con el mismo
 ritmo, los movimientos de la referencia de YouTube (0:57–1:27), pero sin cortes.
 
 Las imágenes van en este orden:
@@ -15,7 +15,9 @@ Las imágenes van en este orden:
 | 5 | Cartas y esfera | job `4d630ce7` |
 
 El look es Blade Runner 2049: Deakins, la paleta del fotograma que mandaste, ángulo bajo,
-lente gran angular y contraluz duro.
+lente gran angular y contraluz duro. El prompt no nombra la película ni al fotógrafo: con esos
+nombres, y con palabras de videojuego como "launcher", Seedance marcó el borrador como propiedad
+intelectual (`ip_detected`, job `e8891707`). El look queda descrito con la luz y la paleta.
 
 Referencia de movimiento para las peleas: combos de YouTube `PdBwNDSKbJ8`, de 0:15 a 0:29. Está
 subida a Higgsfield como media `54d21e00`. El prompt describe dos combos: el del 0:18 (salto
@@ -35,7 +37,7 @@ crouches on the torii lintel and drops down last. They attack ONE AT A TIME, han
 takes them apart up close and keeps pushing forward. Video-to-video pass driven by video 1:
 REPLICATE ITS CAMERA, NOT ITS MOVEMENTS — copy the camera path, the layout and the timing of
 every beat, but never the stiff motion of its mannequins; every body movement is new, fluid,
-real choreography. No blood. Photoreal feature film. Original, no IP.
+real choreography. No blood. Photoreal feature film. Original characters and world.
 
 ACTIVE REFERENCES
 video 1 = the previz (30s, 750 frames at 25 fps, 21:9, ONE continuous take) — a rough 3D
@@ -69,7 +71,7 @@ People in it not inherited.
 image 5 = the floating paper talisman cards with orange and blue eye sigils and the violet
 plasma orb. Look only.
 
-LOOK — Roger Deakins, Blade Runner 2049: 2.39:1, ultra-wide lens, low angles, centered
+LOOK — moody neo-noir sci-fi cinematography: 2.39:1, ultra-wide lens, low angles, centered
 compositions; hard light, high contrast, strong backlight from practical sources; huge
 volumetric beams slicing through fog, cyan-blue from one side, magenta-pink from the other; the
 card walls glowing orange and blue in the haze. Mostly dark frames, crushed blacks, flashes and
@@ -90,15 +92,15 @@ recoiling, scrambling, bodies twisting and reacting to every hit before they sha
 limbs, no sliding feet, no snapping between poses, no robotic or puppet-like motion, no frozen
 holds.
 
-COMBOS — the director's movement reference; reproduce their rhythm and flow as live action:
+COMBOS — the director's choreography; reproduce their rhythm and flow as live action:
 COMBO 1, AERIAL INTO GROUND CHAIN: John springs off a surface (a wall, a pillar or the enemy's
 own raised limb), meets the enemy in the air with a cutting slash while the camera follows him
 upward, lands in a low crouch and, with zero pause, unleashes a rapid chain of four or five low
 sweeping cuts that alternate direction, stepping forward with each one, the blade leaving
 white-hot arcs, driving the enemy back.
-COMBO 2, SPIN-KICK, DASH, LAUNCHER: a spinning back kick slams the enemy away; John instantly
+COMBO 2, SPIN-KICK, DASH, RISING SLASH: a spinning back kick slams the enemy away; John instantly
 dashes after it so fast the frame streaks with motion lines and the camera snaps in; a flurry of
-strikes too fast to follow, a split second of darkness, then one final rising slash that launches
+strikes too fast to follow, a split second of darkness, then one final rising slash that throws
 the enemy high into the air.
 
 CAMERA — strictly follow video 1, 1:1 and frame-aligned for all 30 seconds. ONE
@@ -161,7 +163,7 @@ shatters 14.0s. Monster 4 (the brute) → combination on it alone: elbow 15.4s, 
 15.6s, pommel to the jaw 15.8s, backhand cut 16.0s → shatters.
 17–21s Monster 5 presses with feints (17.8s, 18.6s), John slips each; 19.5s it commits → COMBO 2:
 a spinning back kick 19.6s slams it down the path, John dashes after it in a blur of motion
-streaks and his rising slash launches it into the air, where it shatters at 20.1s. 20.5s Monster 6 leaps from the torii and lands in a crouch 21.0s.
+streaks and his rising slash throws it into the air, where it shatters at 20.1s. 20.5s Monster 6 leaps from the torii and lands in a crouch 21.0s.
 21–26s the last duel, the longest exchange: John closes at a run; 22.7s high claw blocked,
 sparks; 23.0s low claw slipped; 23.3s its kick checked by John's forearm; 23.7s John's cut makes
 it jump back; 24.0s elbow staggers it; 24.4s its wide sweep — COMBO 1: John springs up off its raised
@@ -185,5 +187,5 @@ fluid, weighty, connected choreography, never like the stiff previz mannequins. 
 from image 2, each its own variant, always in front of him; one at a time, hand to hand; six
 destructions at 12.2 / 13.0 / 14.0 / 16.0 / 20.1 / 26.0s. Katana until 4.45s and from 27.6s, the
 much larger flame sword in between; John never hit; image 1 identity with round gold sunglasses
-in every frame; Blade Runner 2049 look and palette; no text, no watermarks.
+in every frame; the LOOK above and its palette; no text, no watermarks.
 ```
