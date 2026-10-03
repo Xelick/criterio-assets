@@ -25,6 +25,13 @@ Las imágenes van en este orden:
 El prompt no nombra películas ni personas reales, para que no lo bloquee el filtro de propiedad
 intelectual.
 
+Borrador 1 (job `9f821264`): el movimiento ya salió fluido. Faltaba que los monstruos reaccionaran a
+los cortes y soltaran algo; el primero no soltó nada. Por eso se agregó la sección HIT REACTIONS
+AND ENERGY: en cada golpe sale luz y brasas en los colores de la paleta, en lugar de sangre. También
+se detallaron los cortes del primer monstruo. Para el jefe final, cada corte le deja una marca de
+luz que no se apaga y se acumula aunque él no pierda la postura; el último golpe es un corte
+cargado que enciende todas las marcas a la vez y lo destruye desde dentro.
+
 ```text
 Create a 30-second photoreal live-action fight film at night, ONE continuous take with no cuts.
 John — crimson coat, round gold sunglasses — walks into a stone shrine courtyard by the sea, stops
@@ -100,11 +107,30 @@ PHYSICS
 Feet plant and carry weight on wet stone, with small splashes; knees and hips absorb every step and
 landing; the crimson coat swings with cloth delay and settles a beat after he stops. The flame sword
 is MUCH larger than a katana and has real mass: every cut starts in the hips, the blade drags
-momentum through the follow-through and he recovers it into the next move. Every hit transfers
-weight — the monster's body folds, recoils or is thrown, never a hit without a reaction. Monsters
-grip the stone with their claws, skid when they stop and push off when they lunge. When a monster
-is destroyed it shatters into black and iridescent flakes and cyan sparks that fade within half a
-second — no body left, no blood.
+momentum through the follow-through and he recovers it into the next move. Monsters grip the
+stone with their claws, skid when they stop and push off when they lunge.
+
+HIT REACTIONS AND ENERGY
+EVERY cut or blow that lands on a monster — Monster 1 included, from the very first cut — gets a
+visible body reaction AND a release of light. The body jolts, recoils, staggers or folds around the
+hit, claws flaring, head snapping back, feet scrabbling for balance. Where the blade passes, the
+monster's inner energy spills out instead of blood: a slash of cyan, magenta and violet light
+opens along the line of the cut and flares through the cracks of its black chitin, throwing a
+spray of glowing embers and flecks of light in the palette (#3E9EB7 #5BA2B8 #7BB8AF #A86A8C
+#C4879F with white-hot cores) that drift and fade within a few frames. Elbows, knees and kicks send
+a pulse of light rippling through its cracks. Blocks on the blade throw crimson-gold sparks; the
+flame sword leaves a brief crimson-gold trail. The bigger the hit, the bigger the burst. Each
+monster's destruction is the biggest burst of its fight: light floods out of every crack and it
+shatters into black and iridescent flakes and cyan-magenta light that fade within half a second —
+no body left, no blood.
+THE FINAL BOSS (Monster 6) is different: it is too strong to stagger, so it keeps its stance and
+only flinches, but every cut still hurts it — each one leaves a glowing scar of cyan-magenta light
+burned into its chitin that does NOT fade. The scars accumulate hit after hit, cracks spreading
+from them and leaking light, so by 25s its body is laced with glowing wounds and it is visibly
+weakening. John's last strike is CHARGED: during his sidestep and full spin the flame sword
+gathers power — the flame swells and burns brighter, crimson-gold light coiling up the blade —
+and the final diagonal cut releases it all; at that instant every scar on the boss ignites at once,
+the accumulated damage detonating together, and it bursts apart from the inside.
 
 CAST AND BLOCKING (0–30s)
 Exactly one John and six monsters, never a seventh, no duplicates, no bystanders. None of the
@@ -154,41 +180,49 @@ muscles swell, and it bursts into its monster form from image 2. End state 7.6s:
 sword raised, stepping forward; the six monsters facing him down the path.
 7.6–12.2s — Monster 1 (the sprinter) rushes in alone: 8.7s high claw blocked on the blade, sparks;
 9.3s low claw slipped; 9.5–10.6s John answers with the ground chain of COMBO 1 — four low sweeping
-cuts, stepping forward with each — driving it back; 11.7s it overcommits a lunge, John drops low and
-sweeps its leg, it slams onto its back at his feet (12.0s), downward thrust, it shatters at 12.2s.
-End state: John rising from the thrust, the next monster already coming.
-12.2–17s — the chain, John stepping forward each time: Monster 2 rushes, rising elbow into its gut,
-it folds, flat cut, it shatters at 13.0s. Monster 3 scuttles in, one clean diagonal cut, it
-shatters at 14.0s. Monster 4 (the brute): elbow 15.4s, knee to the ribs 15.6s, pommel to the jaw
+cuts, stepping forward with each — and EVERY cut lands: each one opens a glowing slash of
+cyan-magenta light across its body and throws embers, and it staggers back a step with each hit;
+11.7s it overcommits a lunge, John drops low and sweeps its leg, it slams onto its back at his feet
+(12.0s), downward thrust, light erupts from the cut and it shatters at 12.2s in a burst of light and
+flakes. End state: John rising from the thrust, the next monster already coming.
+12.2–17s — the chain, John stepping forward each time, every hit answered with light: Monster 2
+rushes, rising elbow into its gut sends a pulse of light through its cracks, it folds, flat cut, it
+shatters at 13.0s. Monster 3 scuttles in, one clean diagonal cut, it shatters at 14.0s. Monster 4 (the brute): elbow 15.4s, knee to the ribs 15.6s, pommel to the jaw
 15.8s, backhand cut 16.0s, it shatters. End state 17s: John in guard, breathing, sword low.
 17–21s — Monster 5 presses with feints (17.8s, 18.6s), John slips each; 19.5s it commits — COMBO 2:
 a spinning back kick at 19.6s slams it down the path, John dashes after it in a blur and his rising
 slash throws it into the air, where it shatters at 20.1s. 20.5s Monster 6 leaps down from the torii
 and LANDS CLEANLY ON ITS FEET in a crouch at 21.0s, upright a beat later. End state 21s: John and
 Monster 6 facing each other down the path.
-21–26s — the last duel, the longest exchange: John closes at a run; 22.7s high claw blocked,
-sparks; 23.0s low claw slipped; 23.3s its kick checked by John's forearm; 23.7s John's cut makes it
-jump back; 24.0s elbow staggers it; 24.4s its wide sweep — COMBO 1: John springs up off its raised
-arm, cuts across it in mid-air, lands in a crouch and chains three low sweeping cuts (24.7–25.0s),
-sparks off its claws, driving it back toward the torii; 25.1s desperate overhead lunge, 25.4s
-sidestep and a full spin, final diagonal cut at 26.0s — it shatters into the biggest storm of
-flakes and cyan sparks.
+21–26s — the last duel with the final boss, the longest exchange: John closes at a run; 22.7s high
+claw blocked, sparks; 23.0s low claw slipped; 23.3s its kick checked by John's forearm; 23.7s John's
+cut lands across its chest — it holds its ground but a glowing scar stays burned into it and it
+jumps back; 24.0s elbow — it barely flinches; 24.4s its wide sweep — COMBO 1: John springs up off its
+raised arm, cuts across it in mid-air, lands in a crouch and chains three low sweeping cuts
+(24.7–25.0s), each one adding a new glowing scar, light now leaking from cracks all over its body,
+driving it back toward the torii; 25.1s desperate overhead lunge; 25.4s John sidesteps into a full
+spin while the flame sword charges, the flame swelling and blazing brighter; 26.0s the CHARGED final
+diagonal cut — every scar on the boss ignites at once and it explodes from the inside into the
+biggest storm of light, flakes and cyan-magenta sparks of the film.
 26–30s — John walks on through the drifting flakes toward the torii; 27.6s the flame dies and the
 sword becomes the katana; 28.0s he sheathes it (click); he passes under the torii toward the dark
 sea. End state 30s: his back to the camera under the torii, walking, coat moving in the wind.
 
 AUDIO
 Sea wind, deep rumble, cloth snaps, footfalls on wet stone, cracking chitin, claws on steel, heavy
-impacts, crystalline shimmer of flakes; no music, no dialogue. Accents: 3.6s click · 4.6s steel
+impacts, an electric crackle and hiss of escaping energy on every cut that lands, crystalline
+shimmer of flakes; no music, no dialogue. Accents: 3.6s click · 4.6s steel
 ring into a flame roar · 6.6–7.4s chitin cracking · 8.7/10.2s clangs · 12.0s slam ·
-12.2/13.0/14.0/16.0/20.1s shatters · 19.6s kick · 21.0s landing · 22.5–26s rapid trade · 26.0s
-biggest shatter · 28.0s sheath click · 28.5–30s wind only.
+12.2/13.0/14.0/16.0/20.1s shatters · 19.6s kick · 21.0s landing · 22.5–26s rapid trade ·
+25.4–26.0s rising hum of the sword charging · 26.0s the charged cut and the biggest shatter · 28.0s sheath click · 28.5–30s wind only.
 
 HOLD FOR THE FULL TIMELINE
 video 1 camera path, positions and facing 1:1, one continuous take, no cuts, John always in frame;
 bodies move with fluid, weighty, connected choreography — never like the rigid previz boxes; no
 green anywhere; six monsters from image 2, each its own variant, always in front of him, one at a
-time; six destructions at 12.2 / 13.0 / 14.0 / 16.0 / 20.1 / 26.0s; katana until 4.45s and from
-27.6s, the much larger flame sword in between, always gripped by the handle; John never hit; image
+time; every hit on a monster gets a body reaction and a burst of palette-coloured light and embers,
+from the first cut of Monster 1 on; the final boss keeps its stance but keeps the glowing scars of
+every cut until the charged final cut ignites them all; six destructions at 12.2 / 13.0 / 14.0 /
+16.0 / 20.1 / 26.0s; katana until 4.45s and from 27.6s, the much larger flame sword in between, always gripped by the handle; John never hit; image
 1 identity with round gold sunglasses in every frame; no text, no watermarks.
 ```

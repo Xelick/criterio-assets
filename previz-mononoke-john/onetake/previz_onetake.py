@@ -682,6 +682,35 @@ if BLOQUES:
 IMPACTOS = [(8.7, 0.5), (10.2, 0.4), (12.0, 1.0), (12.2, 0.6), (12.85, 0.7), (13.0, 0.8), (14.0, 0.9),
             (15.4, 0.5), (15.6, 0.5), (15.8, 0.5), (16.0, 0.9), (19.6, 1.0), (20.12, 0.6), (21.0, 0.6),
             (22.7, 0.5), (23.3, 0.5), (24.0, 0.6), (24.7, 0.6), (26.0, 1.2), (28.0, 0.25)]
+if os.environ.get("SUAVE"):
+    # Cámara suave y planos claros, al estilo de las peleas de espadas de cine de artes marciales:
+    # grúa que establece el lugar antes del caos, planos de cuerpo entero con los dos
+    # peleadores de perfil (cámara perpendicular a la línea de acción) y el resto de los
+    # monstruos esperando al fondo, una grúa alta en la pausa para leer la geografía, y nada de
+    # sacudidas ni zooms bruscos. La cámara no pasa de x = 3.6 para no chocar con las cartas.
+    CAM = [
+        (0.0, (0.0, 9.0, 5.0), (0, 0, 1.0), 24, Z, 0, 0),           # grúa alta y frontal, John al centro
+        (3.1, (0.0, 4.6, 1.5), (0, 0, 1.0), 28, Z, 0, 0),           # baja a la altura de los ojos; se detiene
+        (4.4, (2.4, 2.6, 1.2), (0, 0.3, 1.0), 24, Z, 0, 0),         # se abre hacia su derecha con la mano en la empuñadura
+        (5.6, (3.4, 1.2, 0.9), (0, 2.0, 1.5), 20, Z, 0, 0),         # bajo, mirando arriba: suben las cartas, se forman
+        (7.6, (3.6, -0.3, 1.1), (0, 1.2, 1.3), 18, Z, 0, 0),         # tres cuartos de cuerpo entero para el primer duelo
+        (9.5, (3.6, -0.4, 1.1), (0, 0.9, 1.25), 18, Z, 0, 0),
+        (11.5, (3.5, -0.6, 0.9), (0, 0.6, 1.1), 18, Z, 0, 0),        # más bajo para la barrida y la caída
+        (12.3, (3.5, -0.4, 1.0), (0, 0.8, 1.2), 18, Z, 0, 0),
+        (14.0, (3.6, -0.3, 1.1), (0, 1.0, 1.3), 20, Z, 0, 0),        # se desliza a su lado en la cadena
+        (16.2, (3.4, -0.2, 1.1), (0, 1.0, 1.3), 20, Z, 0, 0),
+        (17.4, (2.2, -2.6, 5.0), (0, 2.6, 0.6), 24, Z, 0, 1),       # grúa alta: John, el quinto y el torii
+        (18.1, (1.6, -3.0, 3.6), (0, 2.6, 1.0), 24, Z, 0, 0),
+        (19.4, (1.0, -3.6, 1.4), (0, 3.0, 1.3), 24, Z, 0, 0),       # bajo detrás de él: la patada sale por el camino
+        (21.0, (2.2, -2.6, 1.3), (0, 3.0, 1.5), 26, Z, 0, 0),       # el sexto cae del torii; empieza a rodear
+        (22.4, (3.4, -1.0, 1.1), (0, 1.0, 1.4), 18, Z, 0, 0),        # perfil para el último duelo
+        (24.0, (3.5, -1.0, 1.1), (0, 1.1, 1.4), 18, Z, 0, 0),
+        (25.6, (3.3, -0.8, 1.1), (0, 1.1, 1.4), 20, Z, 0, 0),
+        (26.2, (3.0, -0.6, 1.2), (0, 1.0, 1.4), 24, Z, 0, 0),        # leve acercamiento en el corte final
+        (27.8, (1.6, -3.0, 1.6), (0, 2.0, 1.4), 28, Z, 0, 0),
+        (30.0, (0.3, -6.0, 2.6), (0, 3.0, 1.6), 26, Z, 0, 1),       # se aleja subiendo mientras cruza el torii
+    ]
+    IMPACTOS = []
 
 
 def vec(k):
