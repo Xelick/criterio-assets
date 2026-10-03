@@ -12,7 +12,19 @@ ejemplos de Higgsfield (ver `../GUIA_PREVIZ_BLOQUES.md`):
 Único cambio de cámara respecto al v3: el empuje de los 3.4–4.3 s termina en un plano medio y no
 en el primer plano de la mano, porque con un bloque ese primer plano no mostraba nada.
 
-Las imágenes van en este orden:
+Las imágenes van en este orden. Desde el 3 de octubre se usa la cuenta nueva de Higgsfield; los
+IDs de esa cuenta están en la última columna (los de la cuenta anterior ya no sirven ahí).
+
+| Referencia | Cuenta anterior | Cuenta nueva |
+|---|---|---|
+| Video 1, previz en bloques | `2d7e064d` | `0a6d5cba-59bb-46fe-981c-a9c138b16858` |
+| Imagen 1, John | `cb042bab` | `bab12e38-cab5-46ed-b0d1-917c52448167` |
+| Imagen 2, seis monstruos | `8e49fb99` | `2eb54f1c-9b00-45d1-ae66-778b5226b770` |
+| Imagen 3, espada | `f2d00d5d` | `4fe73d07-1cfa-4112-a18b-554ced360014` |
+| Imagen 4, locación | `d8839ed2` | `24453165-3c2e-4bc1-87e0-43d7ef9b1cec` |
+| Imagen 5, cartas y esfera | `4d630ce7` | `faf81de9-4ebf-4bcc-892c-269e7679ce9e` |
+
+Tabla original:
 
 | Imagen | Qué es | ID |
 |---|---|---|
