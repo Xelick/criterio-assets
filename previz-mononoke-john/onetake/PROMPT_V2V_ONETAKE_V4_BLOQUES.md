@@ -30,7 +30,10 @@ los cortes y soltaran algo; el primero no soltó nada. Por eso se agregó la sec
 AND ENERGY: en cada golpe sale luz y brasas en los colores de la paleta, en lugar de sangre. También
 se detallaron los cortes del primer monstruo. Para el jefe final, cada corte le deja una marca de
 luz que no se apaga y se acumula aunque él no pierda la postura; el último golpe es un corte
-cargado que enciende todas las marcas a la vez y lo destruye desde dentro.
+cargado que enciende todas las marcas a la vez y lo destruye desde dentro. En ese golpe (26 s) hay
+un impact frame, como en el anime: unos 6 cuadros en blanco y negro puro, con 2 cuadros en
+negativo, y luego vuelve al color cuando el jefe explota. El prompt no dice "anime" para que no
+cambie el estilo del resto del video, que sigue siendo fotorrealista.
 
 ```text
 Create a 30-second photoreal live-action fight film at night, ONE continuous take with no cuts.
@@ -131,6 +134,13 @@ weakening. John's last strike is CHARGED: during his sidestep and full spin the 
 gathers power — the flame swells and burns brighter, crimson-gold light coiling up the blade —
 and the final diagonal cut releases it all; at that instant every scar on the boss ignites at once,
 the accumulated damage detonating together, and it bursts apart from the inside.
+IMPACT FRAME (once in the film, at 26.0s): at the exact instant the charged cut lands, the picture
+flips for about a quarter of a second (6 frames) into a stark impact frame — the live-action image
+reduced to pure black and pure white, no greys and no colour: John and the boss as hard graphic
+silhouettes, the blade's path and the eruption of light as pure white, with harsh radial streaks
+bursting from the point of impact; in the middle of it, 2 frames flash as an inverted negative
+(black and white swapped). Then it snaps straight back to full colour as the boss explodes into
+light and flakes. Photoreal before and after; the impact frame is the only stylised moment.
 
 CAST AND BLOCKING (0–30s)
 Exactly one John and six monsters, never a seventh, no duplicates, no bystanders. None of the
@@ -202,7 +212,8 @@ raised arm, cuts across it in mid-air, lands in a crouch and chains three low sw
 (24.7–25.0s), each one adding a new glowing scar, light now leaking from cracks all over its body,
 driving it back toward the torii; 25.1s desperate overhead lunge; 25.4s John sidesteps into a full
 spin while the flame sword charges, the flame swelling and blazing brighter; 26.0s the CHARGED final
-diagonal cut — every scar on the boss ignites at once and it explodes from the inside into the
+diagonal cut — IMPACT FRAME: 6 frames of stark black-and-white with a 2-frame negative flash — then
+back to colour as every scar on the boss ignites at once and it explodes from the inside into the
 biggest storm of light, flakes and cyan-magenta sparks of the film.
 26–30s — John walks on through the drifting flakes toward the torii; 27.6s the flame dies and the
 sword becomes the katana; 28.0s he sheathes it (click); he passes under the torii toward the dark
@@ -214,7 +225,8 @@ impacts, an electric crackle and hiss of escaping energy on every cut that lands
 shimmer of flakes; no music, no dialogue. Accents: 3.6s click · 4.6s steel
 ring into a flame roar · 6.6–7.4s chitin cracking · 8.7/10.2s clangs · 12.0s slam ·
 12.2/13.0/14.0/16.0/20.1s shatters · 19.6s kick · 21.0s landing · 22.5–26s rapid trade ·
-25.4–26.0s rising hum of the sword charging · 26.0s the charged cut and the biggest shatter · 28.0s sheath click · 28.5–30s wind only.
+25.4–26.0s rising hum of the sword charging · 26.0s a split second of total silence on the
+impact frame, then a thunderclap of an impact and the biggest shatter · 28.0s sheath click · 28.5–30s wind only.
 
 HOLD FOR THE FULL TIMELINE
 video 1 camera path, positions and facing 1:1, one continuous take, no cuts, John always in frame;
@@ -222,7 +234,8 @@ bodies move with fluid, weighty, connected choreography — never like the rigid
 green anywhere; six monsters from image 2, each its own variant, always in front of him, one at a
 time; every hit on a monster gets a body reaction and a burst of palette-coloured light and embers,
 from the first cut of Monster 1 on; the final boss keeps its stance but keeps the glowing scars of
-every cut until the charged final cut ignites them all; six destructions at 12.2 / 13.0 / 14.0 /
+every cut until the charged final cut ignites them all; at 26.0s one black-and-white impact frame
+with a negative flash, then back to colour; six destructions at 12.2 / 13.0 / 14.0 /
 16.0 / 20.1 / 26.0s; katana until 4.45s and from 27.6s, the much larger flame sword in between, always gripped by the handle; John never hit; image
 1 identity with round gold sunglasses in every frame; no text, no watermarks.
 ```
