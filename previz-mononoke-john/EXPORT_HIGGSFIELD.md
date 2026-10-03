@@ -135,3 +135,12 @@ Para pasar a otra cuenta solo hacen falta seis archivos: el previz `2d7e064d`, l
 | `f1d2f981.jpg` | [abrir](https://d2ol7oe51mr4n9.cloudfront.net/user_3EbzM3eKKwcmoP0DyGgm34Y5b0U/f1d2f981-d848-43e9-885e-a42a7d01caa4.jpg) |
 | `f3e71707.jpg` | [abrir](https://d2ol7oe51mr4n9.cloudfront.net/user_3EbzM3eKKwcmoP0DyGgm34Y5b0U/f3e71707-bffa-4d39-8fee-b5d37972afe3.jpg) |
 | `f6b24383.png` | [abrir](https://d2ol7oe51mr4n9.cloudfront.net/user_3K4O0O0l56fNWa9WqWQdW4WRQIY/f6b24383-5cdc-458c-8a46-62a0adf0c58c.png) |
+
+## Cuenta nueva (desde el 3 de octubre)
+
+ID de usuario `user_3K7wGZ3ViZx9yH54IqlB412yk6g`. Las 6 referencias se importaron por URL desde la
+cuenta anterior; sus IDs nuevos están en `onetake/PROMPT_V2V_ONETAKE_V4_BLOQUES.md`.
+
+| Archivo | Enlace |
+|---|---|
+| Video A final, 1080p, con extremidades cortadas (job `3766c53e`) | [abrir](https://d8j0ntlcm91z4.cloudfront.net/user_3K7wGZ3ViZx9yH54IqlB412yk6g/hf_20261003_071926_3766c53e-4fb2-4a95-94c9-568a88c974c2.mp4) |
