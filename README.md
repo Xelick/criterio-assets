@@ -2,11 +2,11 @@
 
 Las imágenes y vídeos que sirve `alojadordemisimagenes12123134.netlify.app`.
 
-**Los archivos sueltos de la raíz no se editan a mano.** Son una *salida*: los
-escribe `publicar_assets.py` copiando lo que generan los build. Para cambiar una
-pieza se edita su generador en `002_IA_COURSE/CURSO_AI_OPERATOR/conceptos/` y se
-vuelve a publicar. La excepción es [`clientes/`](#clientes), que sí se escribe a
-mano.
+**En `main` no se edita nada a mano.** Es una *salida*: la escribe
+`publicar_assets.py` copiando lo que generan los build. Para cambiar una pieza
+se edita su generador en `002_IA_COURSE/CURSO_AI_OPERATOR/conceptos/` y se
+vuelve a publicar. El material de clientes va en su propia branch
+(ver [Clientes](#clientes)).
 
 ```bash
 cd "G:/My Drive/002_IA_COURSE/CURSO_AI_OPERATOR/conceptos"
@@ -36,9 +36,9 @@ Todo plano, ordenado por prefijo. Cada serie sale de una carpeta de export:
 | `cocokiki-*` (mp4 + portada) | Reels de la cuenta Coco & Kiki | a mano | — |
 
 `publicar_assets.py` borra de la raíz los `.jpg` que ya no genera, pero **nunca**
-toca `.mp4`, `promo-*` ni `noticia-*`. Una portada `cocokiki-*-portada.jpg` no
-está protegida por nombre: si se sube a mano, conviene renombrarla `promo-…` o
-añadir `cocokiki-` a la lista de protegidos del script.
+toca `.mp4`, `promo-*`, `noticia-*` ni `cocokiki-*`. Una serie nueva subida a
+mano necesita su prefijo en esa lista de protegidos, o la próxima corrida la
+borra.
 
 ## Por qué está plano
 
@@ -46,18 +46,22 @@ Las colas de publicación piden `<sitio>/C01-01.jpg`, sin carpetas. Si algún d�
 se anidan, hay que cambiar `HOST` y las colas a la vez. Por eso las series de
 arriba **no** se mueven a carpetas, aunque sean muchas.
 
-## clientes/
+## Clientes
 
-Material de clientes que se escribe a mano. `publicar_assets.py` solo mira los
-archivos sueltos de la raíz, así que las subcarpetas no las toca.
+Cada cliente tiene su propia branch **`cliente/<nombre>`**, independiente de
+`main` (sin historia común): trae solo lo de ese cliente, no los assets de
+Criterio, y no se publica en la web — GitHub Pages y Netlify sirven solo `main`.
 
-| Carpeta | Qué es |
+| Branch | Qué es |
 |---|---|
-| [`clientes/el-eden-de-las-carnes/`](clientes/el-eden-de-las-carnes/) | 10 agentes de Claude Code para la carnicería, adaptados de agency-agents |
+| [`cliente/el-eden-de-las-carnes`](https://github.com/Xelick/criterio-assets/tree/cliente/el-eden-de-las-carnes) | 10 agentes de Claude Code para la carnicería, adaptados de agency-agents |
 
-**Ojo:** el repo es público y se sirve en la web. A `clientes/` no va nada
-privado del cliente (IDs de hojas, webhooks, claves, datos de sus clientes,
-cifras).
+Para un cliente nuevo, se crea una branch huérfana con
+`git switch --orphan cliente/<nombre>` desde un clon limpio.
+
+**Ojo:** el repo es público, así que cualquiera puede ver estas branches en
+GitHub. No va nada privado del cliente: IDs de hojas, webhooks, claves, datos
+de sus clientes ni cifras.
 
 ## Por qué vive en F: y no en Google Drive
 
