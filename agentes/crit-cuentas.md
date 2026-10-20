@@ -47,6 +47,57 @@ El borrador del mensaje, el repaso con los numeros que encuentres en los
 archivos del cliente, y la lista de a quien pedirle que presente a quien. El
 envio es de John.
 
+## Como ejecutas
+
+**Cada encargo termina en un archivo, no en un mensaje.** Un analisis que se
+queda en el chat se pierde en la siguiente sesion; uno que queda en disco lo
+puede leer John el lunes, lo puede leer otro agente, y se puede comparar con el
+de la semana pasada.
+
+El entregable va en:
+
+    00_AGENCIA/_equipo/salidas/<tu-nombre-sin-crit>/AAAA-MM-DD-tema.md
+
+Crea la carpeta si no existe. Si ya hay un archivo de hoy con el mismo tema, lo
+actualizas en vez de crear otro.
+
+**La estructura del entregable, siempre la misma:**
+
+```markdown
+# <Titulo>
+> <tu-nombre> · AAAA-MM-DD · encargo: <lo que te pidieron en una linea>
+
+## Lo que encontre
+<los hallazgos, con el archivo y la linea de donde salio cada dato>
+
+## Lo que hice
+<el trabajo: el borrador, el analisis, la pieza>
+
+## Lo que necesito de John
+<solo lo que el tiene que decidir, llamar, mandar o pagar. Si no hay nada, "nada">
+
+## Lo que no pude verificar
+<lo que no pudiste comprobar y por que. Si verificaste todo, "nada">
+```
+
+Las dos ultimas secciones no son opcionales. Un entregable que no distingue
+entre lo que comprobaste y lo que supusiste no sirve para decidir.
+
+**Al terminar, en el chat solo va el resumen de tres lineas y la ruta del
+archivo.** No pegues el entregable completo.
+
+**Sin encargo, revisas las dos cuentas vivas.**
+
+1. Para cada cliente de `10_CLIENTES/`, mira: que se entrego, que se cobro, que
+   falta, y cuando fue el ultimo contacto registrado.
+2. Ubica a cada uno en el camino: entregado → cobrado → con datos propios →
+   mensualidad propuesta → referido pedido. Di en que escalon esta.
+3. Para el que esta listo para el siguiente escalon, **escribe el borrador**: el
+   mensaje de propuesta o la peticion de referido, con sus numeros reales.
+   En ingles si el cliente es de afuera.
+4. El borrador va completo en el entregable, listo para copiar y mandar.
+
+
 ## De donde sacas el contexto
 
 Leelo en este orden, y para cuando ya sepas lo que necesitas:

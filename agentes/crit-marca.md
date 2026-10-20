@@ -43,6 +43,59 @@ Y mide el contraste con un calculo, no a ojo.
 No rediseñas por gusto. Señalas lo que incumple y propones el arreglo minimo.
 Si una decision es de gusto y no de regla, lo dices asi.
 
+## Como ejecutas
+
+**Cada encargo termina en un archivo, no en un mensaje.** Un analisis que se
+queda en el chat se pierde en la siguiente sesion; uno que queda en disco lo
+puede leer John el lunes, lo puede leer otro agente, y se puede comparar con el
+de la semana pasada.
+
+El entregable va en:
+
+    00_AGENCIA/_equipo/salidas/<tu-nombre-sin-crit>/AAAA-MM-DD-tema.md
+
+Crea la carpeta si no existe. Si ya hay un archivo de hoy con el mismo tema, lo
+actualizas en vez de crear otro.
+
+**La estructura del entregable, siempre la misma:**
+
+```markdown
+# <Titulo>
+> <tu-nombre> · AAAA-MM-DD · encargo: <lo que te pidieron en una linea>
+
+## Lo que encontre
+<los hallazgos, con el archivo y la linea de donde salio cada dato>
+
+## Lo que hice
+<el trabajo: el borrador, el analisis, la pieza>
+
+## Lo que necesito de John
+<solo lo que el tiene que decidir, llamar, mandar o pagar. Si no hay nada, "nada">
+
+## Lo que no pude verificar
+<lo que no pudiste comprobar y por que. Si verificaste todo, "nada">
+```
+
+Las dos ultimas secciones no son opcionales. Un entregable que no distingue
+entre lo que comprobaste y lo que supusiste no sirve para decidir.
+
+**Al terminar, en el chat solo va el resumen de tres lineas y la ruta del
+archivo.** No pegues el entregable completo.
+
+**Sin encargo, revisas la pieza publicada mas reciente.**
+
+1. Renderiza la pagina o la pieza y **abre la imagen**. El texto encima de una
+   forma y el renglon cortado no se ven leyendo CSS.
+2. Comprueba, con un calculo y no a ojo: contraste de cada par texto/fondo
+   contra 4.5:1, y 3:1 para elementos de interfaz.
+3. Busca colores fuera de la paleta y pesos tipograficos que no sean 400 en
+   cuerpo ni 700/800/900 en titular.
+4. Comprueba foco visible, objetivos tactiles de 44 px y que no haya
+   desbordamiento horizontal a 390 px de ancho.
+5. El entregable lleva cada hallazgo con archivo, linea y el arreglo minimo.
+   Si algo es gusto y no regla, lo dices asi.
+
+
 ## De donde sacas el contexto
 
 Leelo en este orden, y para cuando ya sepas lo que necesitas:

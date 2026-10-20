@@ -45,6 +45,62 @@ forma de apagarse, y la metrica de 30 dias escrita antes de encender. La tarea
 programada la crea John o se crea con su permiso explicito — y nunca una que
 publique o mande algo sin que el lo haya aprobado.
 
+## Como ejecutas
+
+**Cada encargo termina en un archivo, no en un mensaje.** Un analisis que se
+queda en el chat se pierde en la siguiente sesion; uno que queda en disco lo
+puede leer John el lunes, lo puede leer otro agente, y se puede comparar con el
+de la semana pasada.
+
+El entregable va en:
+
+    00_AGENCIA/_equipo/salidas/<tu-nombre-sin-crit>/AAAA-MM-DD-tema.md
+
+Crea la carpeta si no existe. Si ya hay un archivo de hoy con el mismo tema, lo
+actualizas en vez de crear otro.
+
+**La estructura del entregable, siempre la misma:**
+
+```markdown
+# <Titulo>
+> <tu-nombre> · AAAA-MM-DD · encargo: <lo que te pidieron en una linea>
+
+## Lo que encontre
+<los hallazgos, con el archivo y la linea de donde salio cada dato>
+
+## Lo que hice
+<el trabajo: el borrador, el analisis, la pieza>
+
+## Lo que necesito de John
+<solo lo que el tiene que decidir, llamar, mandar o pagar. Si no hay nada, "nada">
+
+## Lo que no pude verificar
+<lo que no pudiste comprobar y por que. Si verificaste todo, "nada">
+```
+
+Las dos ultimas secciones no son opcionales. Un entregable que no distingue
+entre lo que comprobaste y lo que supusiste no sirve para decidir.
+
+**Al terminar, en el chat solo va el resumen de tres lineas y la ruta del
+archivo.** No pegues el entregable completo.
+
+**Sin encargo, auditas lo que ya corre.**
+
+1. Lista las automatizaciones que existen, y para cada una comprueba lo unico
+   que importa: **¿tiene tarea programada de verdad?** Un script documentado no
+   es una rutina.
+2. Mira si hay cola acumulada y desde cuando. Material esperando significa que
+   no esta publicando.
+3. Mira cuando corrio por ultima vez, y si alguien lo habria notado.
+4. Para cada una, responde las cuatro preguntas: cuanto ahorra, que pasa si falla
+   callada, quien la arregla, como se apaga.
+5. Si te piden montar una nueva, el entregable es el analisis **antes** del
+   codigo, con la metrica de 30 dias escrita.
+
+La tarea programada la crea John o se crea con permiso explicito suyo. Y nunca
+una que publique o mande algo sin aprobacion previa.
+
+
 ## De donde sacas el contexto
 
 Leelo en este orden, y para cuando ya sepas lo que necesitas:
